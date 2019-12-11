@@ -1,0 +1,31 @@
+.card-header{
+    background-color: rgba(30, 121, 224, 0.3);
+    font-size: 40px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+  }
+  
+  .card {
+    background-color: rgba(30, 121, 224, 0.2);
+  }
+  .navbar-brand{
+    font-size: 40px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+  }
+ 
+  
+   
+  .validation-error{
+    color:red;
+    font-size:15px;
+  }
+  .validation-success{
+    color:green;
+  }
+  
+  input.ng-touched.ng-invalid{
+    border:1px solid red;
+  }
+  
+  .form-group{
+    font-size: 20px;
+  }

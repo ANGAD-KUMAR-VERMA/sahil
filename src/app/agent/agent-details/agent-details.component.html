@@ -1,0 +1,169 @@
+<div class="container mt-5">
+                <div class="row justigy-content-center">
+                    <div class="col-4"></div>
+                    <div class="col-4 title text-center">Agent List</div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+
+<div class="row justify-content-center mt-5">
+        <div class="col-12 col-md-6 col-lg-4 mt-5" *ngFor="let agent of agents">
+                <div class="card">
+                        <img src="https://image.flaticon.com/icons/png/512/17/17797.png" height="200px" width="200px"
+                                class="center">
+                        <div class="card-body">
+                                <div class="row">
+                                        <div class="col-4">
+                                                <b>
+                                                        <h6>Name :</h6>
+                                                </b></div>
+
+                                        <div class="col-6 ">
+                                                {{agent.firstname}} {{agent.lastname}}
+                                        </div>
+                                        <div class="col-2 text-right">
+
+                                        </div>
+                                </div>
+
+                                <div class="row">
+                                        <div class="col-4">
+                                                <b>
+                                                        <h6>Age :</h6>
+                                                </b></div>
+
+                                        <div class="col-4">
+                                                {{agent.age}}
+                                        </div>
+                                        <div class="col-4 text-right"><button class="btn" (click)="allDetails()"><i
+                                                                class="material-icons">
+                                                                arrow_drop_down
+                                                        </i></button></div>
+                                </div>
+
+                                <div class="row">
+                                        <div class="col-6"></div>
+                                        <div class="col-6 text-right"></div>
+                                </div>
+
+                                <div *ngIf="showDetails">
+                                        <div class="row">
+                                                <div class="col-4"><b>
+                                                                <h6>Email :</h6>
+                                                        </b></div>
+                                                <div class="col-8">{{agent.email}}</div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-4"><b>
+                                                                <h6>Conatct No :</h6>
+                                                        </b></div>
+                                                <div class="col-8">{{agent.contactNo}}</div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-4"><b>
+                                                                <h6> Alt Conatct No :</h6>
+                                                        </b></div>
+                                                <div class="col-8">{{agent.altContactNo}}</div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-4"><b>
+                                                                <h6>Address</h6>
+                                                        </b></div>
+                                                <div class="col-8">{{agent.address1}},{{agent.address2}}</div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-4"></div>
+                                                <div class="col-8">{{agent.city}},{{agent.state}},{{agent.zipcode}}
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-4">
+                                                <a [routerLink]="['/edit/agent',agent.id]" class="text_white"><button
+                                                                class="btn btn-primary">Edit</button></a>
+                                        </div>
+                                        <div class="col-4">
+                                                <button class="btn btn-success" data-toggle="modal"
+                                                        data-target="#approveModal">Approve</button>
+                                        </div>
+                                        <div class="col-4">
+                                                <button class="btn btn-danger" data-toggle="modal"
+                                                data-target="#disApproveModal">Disapprove</button>
+                                        </div>
+                                </div>
+
+
+                                <!-- The Modal -->
+                              
+
+
+
+
+                        </div>
+                </div>
+
+        
+
+
+
+        <div class="modal" id="approveModal">
+                        <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                                <h4 class="modal-title">Approve </h4>
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                                Are you sure you want Approve this Agent.
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close</button>
+                                        </div>
+
+                                </div>
+                        </div>
+                </div>
+
+                <div class="modal" id="disApproveModal">
+                                <div class="modal-dialog">
+                                        <div class="modal-content">
+        
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                        <h4 class="modal-title">DisApprove </h4>
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
+                                                </div>
+        
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                        Are you sure you want DisApprove this Agent.
+                                                </div>
+        
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close</button>
+                                                </div>
+        
+                                        </div>
+                                </div>
+                        </div>
+
+
+
+        </div>
+</div>

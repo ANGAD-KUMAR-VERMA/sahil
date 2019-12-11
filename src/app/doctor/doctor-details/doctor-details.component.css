@@ -1,0 +1,17 @@
+.text_red{
+    color: red;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .title{
+      font-size: 50px;
+      background-color: red;
+      color: white;
+      
+  }

@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md">
+    <a routerLink="menu" class="navbar-brand"><i class="material-icons dicon">
+            enhanced_encryption</i>DocCare</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navcontent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse dcircle" id="navcontent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a routerLink="doctors" class="nav-link"  *ngIf="isLoggedIn()">Doctors</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="patients" class="nav-link"  *ngIf="isLoggedIn()">Patients</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="agents" class="nav-link"  *ngIf="isLoggedIn()">Agents</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="services" class="nav-link" >Medicare Services</a>
+            </li>
+            <li class="nav-item">
+                    <a routerLink="login" class="nav-link" *ngIf="!isLoggedIn()">Log In</a>
+                </li>
+            <li class="nav-item">
+                <a routerLink="signup" class="nav-link" *ngIf="!isLoggedIn()">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="isLoggedIn()"><i class="material-icons">person</i>
+                         {{getUser()}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" (click)="onSignOut()" class="nav-link" *ngIf="isLoggedIn()">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>

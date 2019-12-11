@@ -1,0 +1,7 @@
+#carousel-item{
+    height:100px;
+}
+
+.car1 .car2 .car3 {
+    background:rgba(0,0,0,0.5);
+}
