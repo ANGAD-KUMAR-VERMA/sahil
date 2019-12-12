@@ -52,7 +52,7 @@ export class DoctorEditComponent implements OnInit {
             firstname:doctor.firstname,
             lastname:doctor.lastname,
             age:doctor.age,
-            gender:doctor.gender===true?"male":"female",
+            gender:doctor.gender==="male"?true:false,
             dateOfBirth: doctor.dateOfBirth.toISOString().slice(0, 10),
             contactNo:doctor.contactNo,
             altContactNo:doctor.altContactNo,
@@ -77,7 +77,7 @@ export class DoctorEditComponent implements OnInit {
     })
   }
 
-  onSubmitEditdoctor() {
+  onSubmitEditDoctor() {
     console.log(this.doctorEditForm);
 
     this.doctor = {
@@ -86,7 +86,7 @@ export class DoctorEditComponent implements OnInit {
       firstname:this.doctorEditForm.value.firstname,
       lastname:this.doctorEditForm.value.lastname,
       age:this.doctorEditForm.value.age,
-      gender:this.doctorEditForm.value.gender,
+      gender:this.doctorEditForm.value.gender ===true?"male":"female",
       dateOfBirth:this.doctorEditForm.value.dateOfBirth,
       contactNo:this.doctorEditForm.value.contactNo,
       altContactNo:this.doctorEditForm.value.altContactNo,

@@ -24,6 +24,7 @@ import { PatientEditComponent } from './patient/patient-edit/patient-edit.compon
 import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
 import { NotFoundComponent } from './site/not-found/not-found.component';
 import { DetailsComponent } from './details/details.component';
+import { AppointmentBookingComponent } from './appointment/appointment-booking/appointment-booking.component';
 
 
 
@@ -49,6 +50,7 @@ import { DetailsComponent } from './details/details.component';
     PatientDetailsComponent,
     NotFoundComponent,
     DetailsComponent,
+    AppointmentBookingComponent,
   
   ],
   imports: [

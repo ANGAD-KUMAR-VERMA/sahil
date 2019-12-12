@@ -17,11 +17,10 @@ export class PatientDetailsComponent implements OnInit {
   patients:Patient[];
   tempPatients:Patient[];
   showDetails:boolean=false;
-  user:User={
-    
-  };
+   user:User={};
   approveStatus:boolean=false;
   isApproved=false;
+  
  
   roleId:number;
 
@@ -44,7 +43,7 @@ export class PatientDetailsComponent implements OnInit {
           this.user.username=data['username'],
           console.log(this.user.username)
           this.user.password=data['password'],
-          this.user.status=!data['status'],
+          this.user.status=false,
           this.user.roleList=data['roleList'],
           this.roleId = this.user.roleList[0].id;
           if(this.roleId==1){
@@ -107,6 +106,10 @@ export class PatientDetailsComponent implements OnInit {
     return true;
   }
 
+  isApprovable(){
+    return this.authService.isAdmin;
+  }
+
   onSearchText(event: any) {
     this.patientService.filter.next({ title: event.target.value });
   }
@@ -114,5 +117,7 @@ export class PatientDetailsComponent implements OnInit {
   allDetails(){
     return this.showDetails=!this.showDetails;
   }
+
+  
 
 }

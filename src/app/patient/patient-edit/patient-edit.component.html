@@ -4,9 +4,10 @@
                 <div class="card-header">Register</div>
                 <div class="card-body">
 
-                        <div class="alert alert-success" *ngIf="patientEdited else editPatient">Patient details edited successfully !!</div>        
+                        <div class="alert alert-success" *ngIf="patientEdited else editPatient">Patient details edited successfully !!</div>  
+                        <div *ngIf="patientEdited"><a routerLink="/menu"><button class="btn btn-primary">Go To HomePage</button></a>   </div>   
                         <ng-template #editPatient>
-                    <form [formGroup]="patientEditForm" (submit)="onSubmitEditForm()" *ngIf="!submitStatus">
+                    <form [formGroup]="patientEditForm" (submit)="onSubmitEditPatient()" *ngIf="!submitStatus">
 
     
                         <div class="row">

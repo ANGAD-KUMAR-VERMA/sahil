@@ -5,7 +5,7 @@ export interface Agent{
     lastname:string;
     password:string;
     age:string;
-    gender:boolean;
+    gender:string;
     dateOfBirth:Date;
     contactNo:string;
     altContactNo:string;

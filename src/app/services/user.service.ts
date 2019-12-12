@@ -18,21 +18,21 @@ export class UserService  {
     }
 
     authenticate(user:User):Observable<any> {
-        return this.http.post(`http://localhost:8080/users`,user)
+        return this.http.post(`http://localhost:1002/users`,user)
     }
     userAvailable(username:string):Observable<boolean> {
-        return this.http.get<boolean>(`http://localhost:8080/users/${username}`)
+        return this.http.get<boolean>(`http://localhost:1002/users/${username}`)
     }
 
     
     getUser(username:string):Observable<any>{
-        return this.http.get<User>(`http://localhost:8080/users/get/${username}`)
+        return this.http.get<User>(`http://localhost:1002/users/get/${username}`)
     }
 
     updatePatient(user:User,username:string): Observable<any> {
         //let header = new HttpHeaders();
       //  header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
-        return this.http.put(`http://localhost:8080/users/${username}`,user)
+        return this.http.put(`http://localhost:1002/users/${username}`,user)
     }
 
    

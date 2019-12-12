@@ -63,7 +63,7 @@ export class DoctorSignupComponent implements OnInit {
         firstname: this.doctorRegisterForm.get('firstname').value,
         lastname: this.doctorRegisterForm.get('lastname').value,
         age:this.doctorRegisterForm.get('age').value,
-        gender:this.doctorRegisterForm.get('gender').value,
+        gender:this.doctorRegisterForm.get('gender').value===true?"male":"female",
         dateOfBirth:this.doctorRegisterForm.get('dateOfBirth').value,
         contactNo:this.doctorRegisterForm.get('contactNo').value,
         altContactNo:this.doctorRegisterForm.get('altContactNo').value,

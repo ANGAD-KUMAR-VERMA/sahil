@@ -3,21 +3,14 @@
             <div class="card">
                 <div class="card-header">Edit Doctor</div>
                 <div class="card-body">
-                        <div class="alert alert-success" *ngIf="doctorEdited else editDoctor">Doctor details edited successfully !!</div>        
+                        <div class="alert alert-success" *ngIf="doctorEdited else editDoctor">Doctor details edited successfully !!</div>    
+                        <div *ngIf="doctorEdited"><a routerLink="/menu"><button class="btn btn-primary">Go To HomePage</button></a>   </div>    
                         <ng-template #editDoctor>
                     <form [formGroup]="doctorEditForm" (submit)="onSubmitEditDoctor()" *ngIf="!submitStatus">
     
                         <div class="row">
     
-                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-                                        <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text" name="firstname" formControlName="username" class="form-control">
-                                            <span class="validation-error" *ngIf="username.touched && username.hasError('required')">User name cannot be empty</span>
-                                           <div> <span class="validation-error" *ngIf="username.hasError('maxlength')">User cannot exceed 50 characters.</span></div>
-                                            <div><span class="validation-error" *ngIf="username.hasError('pattern')">Special Characters are not allowed</span></div>
-                                        </div>
-                                    </div>
+                               
                             <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                 <div class="form-group">
                                     <label for="firstname">First Name</label>

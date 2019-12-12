@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Agent } from 'src/app/model/agent.model';
 import { AgentService } from '../agent.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-agent-details',
@@ -14,7 +15,7 @@ export class AgentDetailsComponent implements OnInit {
   tempAgent:Agent[];
   isMale:boolean;
   showDetails:boolean=false;
-  constructor(private agentService:AgentService) { }
+  constructor(private agentService:AgentService,private authService:AuthService) { }
 
   ngOnInit() {
 
@@ -28,6 +29,14 @@ export class AgentDetailsComponent implements OnInit {
 
   allDetails(){
     return this.showDetails=!this.showDetails;
+  }
+
+  isEditable(){
+    return(this.authService.isAdmin || this.authService.isDoctor);
+  }
+
+  isApprovable(){
+    return this.authService.isAdmin;
   }
 
 }

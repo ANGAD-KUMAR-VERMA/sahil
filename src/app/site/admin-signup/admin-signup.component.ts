@@ -55,7 +55,7 @@ onSignUpSubmit(){
       firstname: this.adminRegisterForm.get('firstname').value,
       lastname: this.adminRegisterForm.get('lastname').value,
       age:this.adminRegisterForm.get('age').value,
-      gender:this.adminRegisterForm.get('gender').value,
+      gender:this.adminRegisterForm.get('gender').value===true?"male":"female",
       dateOfBirth:this.adminRegisterForm.get('dateOfBirth').value,
       contactNo:this.adminRegisterForm.get('contactNo').value,
       altContactNo:this.adminRegisterForm.get('altContactNo').value,

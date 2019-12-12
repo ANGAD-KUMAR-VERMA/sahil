@@ -61,7 +61,7 @@ export class AgentSignupComponent implements OnInit {
       firstname: this.agentRegisterForm.get('firstname').value,
       lastname: this.agentRegisterForm.get('lastname').value,
       age:this.agentRegisterForm.get('age').value,
-      gender:this.agentRegisterForm.get('gender').value,
+      gender:this.agentRegisterForm.get('gender').value===true?"male":"female",
       dateOfBirth:this.agentRegisterForm.get('dateOfBirth').value,
       contactNo:this.agentRegisterForm.get('contactNo').value,
       altContactNo:this.agentRegisterForm.get('altContactNo').value,

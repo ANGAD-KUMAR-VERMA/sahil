@@ -85,15 +85,15 @@
                                 <div class="row">
                                         <div class="col-4">
                                                 <a [routerLink]="['/edit/agent',agent.id]" class="text_white"><button
-                                                                class="btn btn-primary">Edit</button></a>
+                                                                class="btn btn-primary" [disabled]="!isEditable()">Edit</button></a>
                                         </div>
                                         <div class="col-4">
                                                 <button class="btn btn-success" data-toggle="modal"
-                                                        data-target="#approveModal">Approve</button>
+                                                        data-target="#approveModal" [disabled]="!isApprovable()">Approve</button>
                                         </div>
                                         <div class="col-4">
                                                 <button class="btn btn-danger" data-toggle="modal"
-                                                data-target="#disApproveModal">Disapprove</button>
+                                                data-target="#disApproveModal" [disabled]="!isApprovable()">Disapprove</button>
                                         </div>
                                 </div>
 
@@ -130,7 +130,7 @@
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger"
-                                                        data-dismiss="modal">Close</button>
+                                                        data-dismiss="modal">Approve</button>
                                         </div>
 
                                 </div>
@@ -156,7 +156,7 @@
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
                                                         <button type="button" class="btn btn-danger"
-                                                                data-dismiss="modal">Close</button>
+                                                                data-dismiss="modal">DisApprove</button>
                                                 </div>
         
                                         </div>
