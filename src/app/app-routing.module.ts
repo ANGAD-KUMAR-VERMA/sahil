@@ -15,6 +15,7 @@ import { PatientDetailsComponent } from './patient/patient-details/patient-detai
 import { DoctorEditComponent } from './doctor/doctor-edit/doctor-edit.component';
 import { PatientEditComponent } from './patient/patient-edit/patient-edit.component';
 import { NotFoundComponent } from './site/not-found/not-found.component';
+import { MedicareSericeDetailsComponent } from './medicareService/medicare-serice-details/medicare-serice-details.component';
 
 
 
@@ -34,6 +35,7 @@ const routes: Routes = [
  {path : 'doctors',component:DoctorDetailsComponent,canActivate: [AuthGuardService]},
  {path : 'patients',component:PatientDetailsComponent,canActivate: [AuthGuardService]},
  {path : 'agents',component:AgentDetailsComponent,canActivate: [AuthGuardService]},
+ {path : 'services',component:MedicareSericeDetailsComponent},
  { path: '**', component: NotFoundComponent }
 ];
 

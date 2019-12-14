@@ -11,11 +11,12 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AgentDetailsComponent implements OnInit {
 
   @Input()
-  agents:Agent[];
-  tempAgent:Agent[];
-  isMale:boolean;
-  showDetails:boolean=false;
-  constructor(private agentService:AgentService,private authService:AuthService) { }
+  agents: Agent[];
+  agent: Agent;
+  tempAgent: Agent[];
+  isMale: boolean;
+  showDetails: boolean = false;
+  constructor(private agentService: AgentService, private authService: AuthService) { }
 
   ngOnInit() {
 
@@ -24,18 +25,33 @@ export class AgentDetailsComponent implements OnInit {
       this.agents = [...data]
       console.log(this.agents);
 
-  })
+    })
   }
 
-  allDetails(){
-    return this.showDetails=!this.showDetails;
+  disApprove(id: number) {
+    this.agentService.getAgent(id).subscribe((data: Agent) => {
+      this.agent = data;
+      this.agent.status = false;
+      this.agentService.updateAgent(this.agent).subscribe();
+    })
+  }
+  approve(id: number) {
+    this.agentService.getAgent(id).subscribe((data: Agent) => {
+      this.agent = data;
+      this.agent.status = true;
+      this.agentService.updateAgent(this.agent).subscribe();
+    })
   }
 
-  isEditable(){
-    return(this.authService.isAdmin || this.authService.isDoctor);
+  allDetails() {
+    return this.showDetails = !this.showDetails;
   }
 
-  isApprovable(){
+  isEditable() {
+    return (this.authService.isAdmin || this.authService.isDoctor);
+  }
+
+  isApprovable() {
     return this.authService.isAdmin;
   }
 

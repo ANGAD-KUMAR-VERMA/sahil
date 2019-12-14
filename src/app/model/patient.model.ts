@@ -15,4 +15,5 @@ export interface Patient{
     city:string;
     state:string;
     zipcode:string;
+    status?:boolean;
 }

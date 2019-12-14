@@ -27,15 +27,10 @@ export class DoctorService {
     }
     
     getDoctor(id: number): Observable<any> {
-
-        return Observable.create((observer: Observer<Doctor>) => {
-            this.getDoctors().subscribe((doctors: Doctor[]) => {
-                
-                const docList = doctors.find(doctor => doctor.id== id);
-                
-                observer.next(docList)
-            })
-        })
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:1002/users/doctors/${id}`, { headers: header })
+        
     }
 
 

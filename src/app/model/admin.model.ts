@@ -9,6 +9,7 @@ export interface Admin{
     contactNo:string;
     altContactNo:string;
     email:string;
+    status?:boolean;
     
 
 }

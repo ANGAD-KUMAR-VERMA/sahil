@@ -3,169 +3,101 @@
         <div class="col-4"></div>
         <div class="col-4 title text-center">Patient List</div>
         <div class="col-4"></div>
-    </div>  
+    </div>
 </div>
 
 
 
 <div class="row justify-content-center mt-5">
-        <div class="col-12 col-md-6 col-lg-4 mt-5" *ngFor="let patient of patients">
-                <div class="card">
-                        <img src="https://image.flaticon.com/icons/png/512/17/17797.png" height="200px" width="200px"
-                                class="center">
-                        <div class="card-body">
-                                <div class="row">
-                                        <div class="col-4">
-                                                <b>
+    <div class="col-12 col-md-6 col-lg-4 mt-5" *ngFor="let patient of patients">
+        <div class="card">
+            <img src="https://image.flaticon.com/icons/png/512/17/17797.png" height="200px" width="200px" class="center">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        <b>
                                                         <h6>Name :</h6>
                                                 </b></div>
 
-                                        <div class="col-6 ">
-                                                {{patient.firstname}} {{patient.lastname}}
-                                        </div>
-                                        <div class="col-2 text-right">
+                    <div class="col-6 ">
+                        {{patient.firstname}} {{patient.lastname}}
+                    </div>
+                    <div class="col-2 text-right">
 
-                                        </div>
-                                </div>
+                    </div>
+                </div>
 
-                                <div class="row">
-                                        <div class="col-4">
-                                                <b>
+                <div class="row">
+                    <div class="col-4">
+                        <b>
                                                         <h6>Age :</h6>
                                                 </b></div>
 
-                                        <div class="col-4">
-                                                {{patient.age}}
-                                        </div>
-                                        <div class="col-4 text-right"><button class="btn" (click)="allDetails()"><i
+                    <div class="col-4">
+                        {{patient.age}}
+                    </div>
+                    <div class="col-4 text-right"><button class="btn" (click)="allDetails()"><i
                                                                 class="material-icons">
                                                                 arrow_drop_down
                                                         </i></button></div>
-                                </div>
+                </div>
 
-                                <div class="row">
-                                        <div class="col-6"></div>
-                                        <div class="col-6 text-right"></div>
-                                </div>
+                <div class="row">
+                    <div class="col-6"></div>
+                    <div class="col-6 text-right"></div>
+                </div>
 
-                                <div *ngIf="showDetails">
-                                        <div class="row">
-                                                <div class="col-4"><b>
+                <div *ngIf="showDetails">
+                    <div class="row">
+                        <div class="col-4"><b>
                                                                 <h6>Email :</h6>
                                                         </b></div>
-                                                <div class="col-8">{{patient.email}}</div>
-                                        </div>
-                                        <div class="row">
-                                                <div class="col-4"><b>
+                        <div class="col-8">{{patient.email}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4"><b>
                                                                 <h6>Conatct No :</h6>
                                                         </b></div>
-                                                <div class="col-8">{{patient.contactNo}}</div>
-                                        </div>
-                                        <div class="row">
-                                                <div class="col-4"><b>
+                        <div class="col-8">{{patient.contactNo}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4"><b>
                                                                 <h6> Alt Conatct No :</h6>
                                                         </b></div>
-                                                <div class="col-8">{{patient.altContactNo}}</div>
-                                        </div>
-                                        <div class="row">
-                                                <div class="col-4"><b>
+                        <div class="col-8">{{patient.altContactNo}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4"><b>
                                                                 <h6>Address</h6>
                                                         </b></div>
-                                                <div class="col-8">{{patient.address1}},{{patient.address2}}</div>
-                                        </div>
-                                        <div class="row">
-                                                <div class="col-4"></div>
-                                                <div class="col-8">{{patient.city}},{{patient.state}},{{patient.zipcode}}
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="row">
-                                        <div class="col-12">
-
-                                        </div>
-                                </div>
-                                <div class="row">
-                                        <div class="col-4">
-                                                <a [routerLink]="['/edit/patient',patient.id]" class="text_white"><button
-                                                                class="btn btn-primary" [disabled]="!isEditable()">Edit</button></a>
-                                        </div>
-                                        <div class="col-4">
-                                                <button class="btn btn-success" data-toggle="modal"
-                                                        data-target="#approveModal" [disabled]="!isApprovable()">Approve</button>
-                                        </div>
-                                        <div class="col-4">
-                                                <button class="btn btn-danger" data-toggle="modal"
-                                                data-target="#disApproveModal" [disabled]="!isApprovable()">Disapprove</button>
-                                        </div>
-                                </div>
-
-
-                                <!-- The Modal -->
-                              
-
-
-
-
+                        <div class="col-8">{{patient.address1}},{{patient.address2}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-8">
+                            {{patient.city}},{{patient.state}},{{patient.zipcode}}
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <a [routerLink]="['/edit/patient',patient.id]" class="text_white"><button class="btn btn-primary"
+                                                                [disabled]="!isEditable()">Edit</button></a>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-success" (click)="approve(patient.id)" [disabled]="!isApprovable()">Approve</button>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-danger" (click)="disApprove(patient.id)" [disabled]="!isApprovable()">Disapprove</button>
+                    </div>
                 </div>
 
-        
-
-
-
-        <div class="modal" id="approveModal">
-                        <div class="modal-dialog">
-                                <div class="modal-content">
-
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                                <h4 class="modal-title">Approve </h4>
-                                                <button type="button" class="close"
-                                                        data-dismiss="modal">&times;</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                                Are you sure you want Approve this Agent.
-                                        </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger"
-                                                        data-dismiss="modal" (click)="approve(patient.username)">Approve</button>
-                                        </div>
-
-                                </div>
-                        </div>
-                </div>
-
-                <div class="modal" id="disApproveModal">
-                                <div class="modal-dialog">
-                                        <div class="modal-content">
-        
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                        <h4 class="modal-title">DisApprove </h4>
-                                                        <button type="button" class="close"
-                                                                data-dismiss="modal">&times;</button>
-                                                </div>
-        
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                        Are you sure you want DisApprove this Agent.
-                                                </div>
-        
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger"
-                                                                data-dismiss="modal">DisApprove</button>
-                                                </div>
-        
-                                        </div>
-                                </div>
-                        </div>
-
-
-
+            </div>
         </div>
+    </div>
 </div>

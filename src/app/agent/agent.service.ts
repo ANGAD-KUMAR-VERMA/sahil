@@ -27,15 +27,10 @@ export class AgentService {
     }
     
     getAgent(id: number): Observable<any> {
-
-        return Observable.create((observer: Observer<Agent>) => {
-            this.getAgents().subscribe((agents: Agent[]) => {
-                
-                const agentList = agents.find(agent => agent.id== id);
-                
-                observer.next(agentList)
-            })
-        })
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:1002/users/agents/${id}`, { headers: header })
+      
     }
 
 }

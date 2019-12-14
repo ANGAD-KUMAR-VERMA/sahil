@@ -12,6 +12,7 @@ export class DoctorDetailsComponent implements OnInit {
 
   @Input()
   doctors:Doctor[];
+  doctor:Doctor;
   tempDoctor:Doctor[];
   isMale:boolean;
   showDetails:boolean=false;
@@ -22,9 +23,26 @@ export class DoctorDetailsComponent implements OnInit {
     this.doctorService.getDoctors().subscribe((data: Doctor[]) => {
       this.tempDoctor = [...data]
       this.doctors = [...data]
-      console.log(this.doctors);
-
   })
+  }
+
+  disApprove(id: number) {
+    this.doctorService.getDoctor(id).subscribe((data: Doctor) => {
+      this.doctor = data;
+      this.doctor.status = false;
+      this.doctorService.updateDoctor(this.doctor).subscribe();
+    }) 
+  }
+
+
+  approve(id: number) {
+    this.doctorService.getDoctor(id).subscribe((data: Doctor) => {
+      this.doctor = data;
+      console.log(this.doctor)
+      this.doctor.status = true;
+      console.log(this.doctor)
+      this.doctorService.updateDoctor(this.doctor).subscribe();
+    })
   }
 
   isEditable(){

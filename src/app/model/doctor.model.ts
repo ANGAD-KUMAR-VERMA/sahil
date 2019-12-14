@@ -20,4 +20,5 @@ export interface Doctor{
     speciality:string;
     workhours:string;
     hospitalname:string;
+    status?:boolean;
 }

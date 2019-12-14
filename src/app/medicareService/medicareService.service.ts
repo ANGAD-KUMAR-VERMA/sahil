@@ -2,35 +2,36 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject, Observer } from "rxjs";
 import { AuthService } from "../services/auth.service";
-import { Patient } from '../model/patient.model';
+import { Doctor } from '../model/doctor.model';
+import { MedicareServices } from '../model/medicareService.model';
 
 @Injectable({
     providedIn: 'root'
 })
-export class PatientService {
-    
+export class MedicareService {
+    configUrl: string = 'http://localhost:1002/';
     filter = new Subject();
 
     constructor(private http: HttpClient, private authService: AuthService) {
 
     }
-    getPatients(): Observable<any> {
+    getMedicareServices(): Observable<any> {
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
-        return this.http.get("http://localhost:1002/users/patients", { headers: header })
+        return this.http.get("http://localhost:1002/medicareServices", { headers: header })
     }
 
-    updatePatient(patient:Patient): Observable<any> {
+    updateMedicareServices(medicareServices:MedicareServices): Observable<any> {
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
-        return this.http.put("http://localhost:1002/users/patients",patient,{ headers: header })
+        return this.http.put("http://localhost:1002/medicareServices",medicareServices,{ headers: header })
     }
     
-    getPatient(id: number): Observable<any> {
+    getMedicareService(id: number): Observable<any> {
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
-        return this.http.get(`http://localhost:1002/users/patients/${id}`, { headers: header })
-       
+        return this.http.get(`http://localhost:1002/medicareServices/${id}`, { headers: header })
+        
     }
 
 

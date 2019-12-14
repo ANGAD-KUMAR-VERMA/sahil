@@ -15,4 +15,5 @@ export interface Agent{
     city:string;
     state:string;
     zipcode:string;
+    status?:boolean;
 }

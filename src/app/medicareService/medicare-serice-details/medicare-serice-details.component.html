@@ -1,1 +1,23 @@
-<p>medicare-serice-details works!</p>
+<nav class="navbar navbar-expand-sm bg-primary navbar-darkc mt-5">
+    <div class="navbar-brand">Medicare Services</div>
+</nav>
+
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Medicare Service</th>
+        <th>Service Description</th>
+        <th>Amount</th>
+        <th>Edit</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let medicareService of medicareServices justify-content-center">
+            <td>{{medicareService.id}}</td>
+            <td>{{medicareService.medicareService}}</td>
+            <td>{{medicareService.serviceDescription}}</td>
+            <td>{{medicareService.amount}}</td>
+            <td><a [routerLink]="['edit',medicareService.id]"><button class="btn btn-danger" >Edit</button></a></td>
+        </tr>
+
+    </tbody>
+</table>

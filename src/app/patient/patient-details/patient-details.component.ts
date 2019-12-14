@@ -14,99 +14,56 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PatientDetailsComponent implements OnInit {
 
   @Input()
-  patients:Patient[];
-  tempPatients:Patient[];
-  showDetails:boolean=false;
-   user:User={};
-  approveStatus:boolean=false;
-  isApproved=false;
-  
- 
-  roleId:number;
+  patients: Patient[];
+  tempPatients: Patient[];
+  showDetails: boolean = false;
 
-  constructor(private patientService:PatientService,private userService:UserService,private authService:AuthService) { }
+  approveStatus: boolean = false;
+  isApproved = false;
+  patient: Patient;
+
+  roleId: number;
+
+  constructor(private patientService: PatientService, private userService: UserService, private authService: AuthService) { }
 
   ngOnInit() {
-    this.patientService.getPatients().subscribe((data:Patient[])=>{
-      this.tempPatients= [...data]
-      this.patients= [...data]
+    this.patientService.getPatients().subscribe((data: Patient[]) => {
+      this.tempPatients = [...data]
+      this.patients = [...data]
     })
 
-   
+
   }
 
-  disApprove(username:string)
-  {
-    this.userService.getUser(username).subscribe((data)=>{
-       
-      
-          this.user.username=data['username'],
-          console.log(this.user.username)
-          this.user.password=data['password'],
-          this.user.status=false,
-          this.user.roleList=data['roleList'],
-          this.roleId = this.user.roleList[0].id;
-          if(this.roleId==1){
-              this.user.admin=data['admin']
-           }
-            if(this.roleId==2){
-            this.user.patient=data['patient']
-           }
-          if(this.roleId==3){
-          this.user.doctor=data['doctor']
-           }
-           if(this.roleId==4){
-          this.user.agent=data['agent']
-          }
-    this.userService.updatePatient(this.user,username).subscribe();
+  disApprove(id: number) {
+    this.patientService.getPatient(id).subscribe((data: Patient) => {
+      this.patient = data;
+      this.patient.status = false;
+      this.patientService.updatePatient(this.patient).subscribe();
+    }) 
+  }
+
+  
+
+  approve(id: number) {
+    this.patientService.getPatient(id).subscribe((data: Patient) => {
+      this.patient = data;
+      this.patient.status = true;
+      this.patientService.updatePatient(this.patient).subscribe();
     })
- 
-    this.isApproved=this.user.status;
-    console.log("isApproved "+this.user.status);
   }
 
-  approved(){
+  approved() {
 
     return this.isApproved;
   }
 
-  approve(username:string)
-  {
-    this.userService.getUser(username).subscribe((data)=>{
-       
-          this.user.username=data['username'],
-          console.log(this.user.username)
-          this.user.password=data['password'],
-          this.user.status=true,
-          this.user.roleList=data['roleList'],
-          this.roleId = this.user.roleList[0].id;
-          if(this.roleId==1){
-              this.user.admin=data['admin']
-           }
-            if(this.roleId==2){
-            this.user.patient=data['patient']
-           }
-          if(this.roleId==3){
-          this.user.doctor=data['doctor']
-           }
-           if(this.roleId==4){
-          this.user.agent=data['agent']
-          }
-
-    this.userService.updatePatient(this.user,username).subscribe();
-    })
-    this.isApproved=this.user.status;
-    console.log("isAPproved " +this.isApproved);
-    console.log("isApproved "+this.user.status);
-
+  isEditable() {
+    if (this.authService.isAdmin || this.authService.isAgent || this.authService.isDoctor)
+      return true;
   }
 
-  isEditable(){
-    if(this.authService.isAdmin || this.authService.isAgent || this.authService.isDoctor)
-    return true;
-  }
-
-  isApprovable(){
+  isApprovable() {
     return this.authService.isAdmin;
   }
 
@@ -114,10 +71,10 @@ export class PatientDetailsComponent implements OnInit {
     this.patientService.filter.next({ title: event.target.value });
   }
 
-  allDetails(){
-    return this.showDetails=!this.showDetails;
+  allDetails() {
+    return this.showDetails = !this.showDetails;
   }
 
-  
+
 
 }
