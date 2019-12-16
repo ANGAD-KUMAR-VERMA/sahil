@@ -32,5 +32,10 @@ export class AgentService {
         return this.http.get(`http://localhost:1002/users/agents/${id}`, { headers: header })
       
     }
+    getAgentByUsername(username:string):Observable<any>{
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:1002/users/get/agents/${username}`, { headers: header })
+    }
 
 }

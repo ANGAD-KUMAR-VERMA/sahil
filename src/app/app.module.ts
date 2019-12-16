@@ -26,6 +26,7 @@ import { NotFoundComponent } from './site/not-found/not-found.component';
 import { DetailsComponent } from './details/details.component';
 import { MedicareServiceEditComponent } from './medicareService/medicare-service-edit/medicare-service-edit.component';
 import { AppointmentComponent } from './doctor/appointment/appointment.component';
+import { AppointmentHistoryComponent } from './doctor/appointment-history/appointment-history.component';
 
 
 
@@ -53,6 +54,7 @@ import { AppointmentComponent } from './doctor/appointment/appointment.component
     DetailsComponent,
     MedicareServiceEditComponent,
     AppointmentComponent,
+    AppointmentHistoryComponent,
   
   ],
   imports: [

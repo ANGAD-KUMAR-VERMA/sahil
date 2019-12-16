@@ -68,8 +68,7 @@ export class PatientSignupComponent implements OnInit {
         address2:this.patientRegisterForm.get('address2').value,
         city:this.patientRegisterForm.get('city').value,
         state:this.patientRegisterForm.get('state').value,
-        zipcode:this.patientRegisterForm.get('zipcode').value,
-        status:true
+        zipcode:this.patientRegisterForm.get('zipcode').value
     
       }  
     }

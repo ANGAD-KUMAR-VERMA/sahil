@@ -4,11 +4,12 @@ import { Agent } from './agent.model';
 
 
 export interface Appointment{
-    id:number;
+    id?:number;
     bookingDate:Date;
     appointmentDate:Date;
-    doctor:Doctor;
-    patient:Patient;
-    Agent?:Agent;
+    doctorId:number;
+    patientId:number;
+    agentId?:number;
+    status?:number;
 
 }

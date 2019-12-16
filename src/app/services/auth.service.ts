@@ -11,6 +11,7 @@ import { User } from './user.model';
 export class AuthService {
     loggedInUserId:number;
     loggedIn = false;
+    isPatient=false;
     isAdmin = false;
     isAgent=false;
     isDoctor=false;

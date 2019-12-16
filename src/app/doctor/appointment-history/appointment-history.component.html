@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" *ngFor="let appointment of appointments">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            Patient ID
+                        </div>
+                        <div class="col-6">
+                            {{appointment.patientId}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">Agent ID</div>
+                        <div class="col-6">
+                            {{appointment.agentId}}
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-6">Booking Date</div>
+                    
+                        <div class="col-6">
+                            {{appointment.bookingDate}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">Appointment Date</div>
+                        <div class="col-6">{{appointment.appointmentDate}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Doctor Id
+                        </div>
+                        <div class="col-6">{{appointment.doctorId}}</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

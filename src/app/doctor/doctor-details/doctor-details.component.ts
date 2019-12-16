@@ -55,6 +55,10 @@ export class DoctorDetailsComponent implements OnInit {
     return this.authService.isAdmin;
   }
 
+  canBeBooked(){
+    return this.authService.isAgent || this.authService.isPatient;
+  }
+
   allDetails(){
     return this.showDetails=!this.showDetails;
     
