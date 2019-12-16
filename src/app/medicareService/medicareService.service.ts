@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject, Observer } from "rxjs";
 import { AuthService } from "../services/auth.service";
-import { Doctor } from '../model/doctor.model';
 import { MedicareServices } from '../model/medicareService.model';
 
 @Injectable({
@@ -24,6 +23,7 @@ export class MedicareService {
     updateMedicareServices(medicareServices:MedicareServices): Observable<any> {
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        console.log(medicareServices);
         return this.http.put("http://localhost:1002/medicareServices",medicareServices,{ headers: header })
     }
     

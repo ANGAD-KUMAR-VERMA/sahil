@@ -21,4 +21,5 @@ export interface Doctor{
     workhours:string;
     hospitalname:string;
     status?:boolean;
+    medicareServiceId:number;
 }

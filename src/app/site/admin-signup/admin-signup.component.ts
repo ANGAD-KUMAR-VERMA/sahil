@@ -60,7 +60,8 @@ onSignUpSubmit(){
       contactNo:this.adminRegisterForm.get('contactNo').value,
       altContactNo:this.adminRegisterForm.get('altContactNo').value,
       email:this.adminRegisterForm.get('email').value,
-      password: this.adminRegisterForm.get('password').value
+      password: this.adminRegisterForm.get('password').value,
+      status:true
   
     }
 

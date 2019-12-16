@@ -16,6 +16,8 @@ import { DoctorEditComponent } from './doctor/doctor-edit/doctor-edit.component'
 import { PatientEditComponent } from './patient/patient-edit/patient-edit.component';
 import { NotFoundComponent } from './site/not-found/not-found.component';
 import { MedicareSericeDetailsComponent } from './medicareService/medicare-serice-details/medicare-serice-details.component';
+import { MedicareServiceEditComponent } from './medicareService/medicare-service-edit/medicare-service-edit.component';
+import { AppointmentComponent } from './doctor/appointment/appointment.component';
 
 
 
@@ -32,10 +34,12 @@ const routes: Routes = [
   { path: 'edit/agent/:id', component: AgentEditComponent, canActivate: [AuthGuardService] },
   { path: 'edit/doctor/:id', component: DoctorEditComponent, canActivate: [AuthGuardService] },
   { path: 'edit/patient/:id', component: PatientEditComponent, canActivate: [AuthGuardService] },
+  { path: 'services/edit/:id', component: MedicareServiceEditComponent, canActivate: [AuthGuardService] },
+  { path: 'bookAppointment/:id', component: AppointmentComponent, canActivate: [AuthGuardService] },
  {path : 'doctors',component:DoctorDetailsComponent,canActivate: [AuthGuardService]},
  {path : 'patients',component:PatientDetailsComponent,canActivate: [AuthGuardService]},
  {path : 'agents',component:AgentDetailsComponent,canActivate: [AuthGuardService]},
- {path : 'services',component:MedicareSericeDetailsComponent},
+ {path : 'services',component:MedicareSericeDetailsComponent,canActivate: [AuthGuardService]},
  { path: '**', component: NotFoundComponent }
 ];
 

@@ -66,7 +66,8 @@ export class DoctorEditComponent implements OnInit {
             degree:doctor.degree,
             speciality:doctor.speciality,
             workhours:doctor.workhours,
-            hospitalname:doctor.hospitalname
+            hospitalname:doctor.hospitalname,
+            medicareServiceId:doctor.medicareServiceId
 
           });
           console.log("Gender "+doctor.gender)
@@ -100,7 +101,8 @@ export class DoctorEditComponent implements OnInit {
       degree:this.doctorEditForm.value.degree,
       speciality:this.doctorEditForm.value.speciality,
       workhours:this.doctorEditForm.value.workhours,
-      hospitalname:this.doctorEditForm.value.workhours
+      hospitalname:this.doctorEditForm.value.workhours,
+      medicareServiceId:this.doctorEditForm.value.medicareServiceId
     }
     console.log(this.doctor)
     this.doctorService.updateDoctor(this.doctor).subscribe();
@@ -167,6 +169,9 @@ export class DoctorEditComponent implements OnInit {
   }
   get hospitalname(){
     return this.doctorEditForm.get('hospitalname');
+  }
+  get medicareServiceId(){
+    return this.doctorEditForm.get('medicareServiceId')
   }
 
   }

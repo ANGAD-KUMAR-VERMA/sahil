@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Doctor } from 'src/app/model/doctor.model';
 import { User } from 'src/app/services/user.model';
+import { MedicareServices } from 'src/app/model/medicareService.model';
+import { DoctorService } from 'src/app/doctor/doctor.service';
 
 @Component({
   selector: 'app-doctor-signup',
@@ -12,15 +14,24 @@ import { User } from 'src/app/services/user.model';
 })
 export class DoctorSignupComponent implements OnInit {
 
+  @Input()
+  medicareServices:MedicareServices[];
+  tempMedicareServices:MedicareServices[];
   doctorRegisterForm:FormGroup;
   userNameTaken:boolean = false;
   userNameEmpty:boolean = true;
   submitStatus: boolean = false;
   signupForm: FormGroup;
   alreadyExist: boolean = false;
-  constructor(private userService:UserService,private authService:AuthService) { }
+  constructor(private userService:UserService,private authService:AuthService,private doctorService:DoctorService) { }
 
   ngOnInit() {
+
+    this.doctorService.getServices().subscribe((data: MedicareServices[]) => {
+      this.tempMedicareServices = [...data]
+      this.medicareServices = [...data]
+  })
+  console.log(this.medicareServices);
 
     this.doctorRegisterForm=new FormGroup({
       'username': new FormControl(null, [Validators.required,Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(50)]),
@@ -42,6 +53,7 @@ export class DoctorSignupComponent implements OnInit {
       'speciality': new FormControl(null, [Validators.required,Validators.maxLength(50)]),
       'workhours': new FormControl(null, [Validators.required,Validators.maxLength(20)]),
       'hospitalname': new FormControl(null, [Validators.required,Validators.maxLength(100)]),
+      'medicareServiceId':new FormControl(null,Validators.required)
     })
     console.log(this.doctorRegisterForm.get('firstname'));
   }
@@ -77,7 +89,8 @@ export class DoctorSignupComponent implements OnInit {
         degree:this.doctorRegisterForm.get('degree').value,
         speciality:this.doctorRegisterForm.get('speciality').value,
         workhours:this.doctorRegisterForm.get('workhours').value,
-        hospitalname:this.doctorRegisterForm.get('hospitalname').value
+        hospitalname:this.doctorRegisterForm.get('hospitalname').value,
+        medicareServiceId:this.doctorRegisterForm.get('medicareServiceId').value
 
 
     
@@ -178,6 +191,10 @@ export class DoctorSignupComponent implements OnInit {
   }
   get hospitalname(){
     return this.doctorRegisterForm.get('hospitalname');
+  }
+
+  get medicareServiceId(){
+    return this.doctorRegisterForm.get('medicareServiceId');
   }
 
 

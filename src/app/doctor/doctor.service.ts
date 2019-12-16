@@ -32,6 +32,19 @@ export class DoctorService {
         return this.http.get(`http://localhost:1002/users/doctors/${id}`, { headers: header })
         
     }
+ 
+    getServices(): Observable<any> {
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get("http://localhost:1002/users/medicareServices", { headers: header })
+    }
+
+    updateAppointment(agentId:number,doctorId:number,patientId:number,appointmentDate:Date):Observable<any>{
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.put(`http://localhost:1002/users/appointment/${agentId}/${doctorId}/${patientId}/${appointmentDate}`, { headers: header })
+  
+    }
 
 
 }

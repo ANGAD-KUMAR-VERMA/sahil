@@ -9,6 +9,7 @@ import { User } from './user.model';
 })
 
 export class AuthService {
+    loggedInUserId:number;
     loggedIn = false;
     isAdmin = false;
     isAgent=false;

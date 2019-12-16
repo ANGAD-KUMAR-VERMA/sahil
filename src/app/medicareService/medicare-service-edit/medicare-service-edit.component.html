@@ -1,0 +1,52 @@
+<div class="row justify-content-center mt-5">
+    <div class="col col-md-8 col-lg-8 col-sm-12">
+        <div class="card">
+            <div class="card-header">Edit Medicare Service</div>
+            <div class="card-body">
+                <div class="alert alert-success" *ngIf="medicareServiceEdited else editMedicareService">Medicare Service details edited successfully !!</div>
+                <div *ngIf="medicareServiceEdited"><a routerLink="/menu"><button class="btn btn-primary">Go To HomePage</button></a> </div>
+                <ng-template #editMedicareService>
+                    <form [formGroup]="medicareServiceEditForm" (submit)="onSubmitEditMedicareService()" *ngIf="!submitStatus">
+
+                        <div class="row">
+
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="firstname">Medicare Service</label>
+                                    <input type="text" name="medicareService" formControlName="medicareService" class="form-control">
+                                    <span class="validation-error" *ngIf="service.touched && service.hasError('required')">First name cannot be empty</span>
+                                    <div> <span class="validation-error" *ngIf="service.hasError('maxlength')">Lastname cannot exceed 50 characters.</span></div>
+                                    <div><span class="validation-error" *ngIf="service.hasError('pattern')">Special Characters are not allowed</span></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="lastname">Service Description</label>
+                                    <input type="text" name="serviceDescription" formControlName="serviceDescription" class="form-control">
+                                    <span class="validation-error" *ngIf="serviceDescription.touched && serviceDescription.hasError('required')">Last name cannot be empty</span>
+                                    <div><span class="validation-error" *ngIf="serviceDescription.hasError('maxlength')">Lastname cannot exceed 50 characters.</span></div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="age">Amount</label>
+                                    <input type="number" name="amount" formControlName="amount" class="form-control">
+                                    <span class="validation-error" *ngIf="amount.touched && amount.hasError('required')">Age  cannot be empty</span>
+
+                                    <div><span class="validation-error" *ngIf="amount.hasError('pattern')">Enter only Numeric Values</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <input type="submit" class="btn btn-danger" value="Save" [disabled]="!medicareServiceEditForm.valid">
+                        </div>
+
+                    </form>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="row justify-content-center mt-5">
+    <div class="col col-md-8 col-lg-8 col-sm-12">
+        <div class="card">
+            <div class="card-header">Book Appointment</div>
+            <div class="card-body">
+                <div class="alert alert-success" *ngIf="appointmentBooked else bookAppointment">Appointment booked Successfully !!</div>
+                <div *ngIf="medicareServiceEdited"><a routerLink="/menu"><button class="btn btn-primary">Go To HomePage</button></a> </div>
+                <ng-template #bookAppointment>
+                    <form [formGroup]="appointmentForm" (submit)="onSubmitAppointmentBooking()" *ngIf="!submitStatus">
+
+                        <div class="row">
+
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="doctorId">Doctor ID</label>
+                                    <input type="text" name="doctorId" formControlName="doctorId" class="form-control">
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="medicareService">Medicare Service</label>
+                                    <input type="text" name="medicareService" formControlName="medicareService" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="patientId">Patient ID</label>
+                                    <input type="text" name="patientId" formControlName="patientId" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="appointmentDate">Appointment Date</label>
+                                    <input type="datetime-local" name="appointmentDate" formControlName="appointmentDate" class="form-control">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row">
+                            <input type="submit" class="btn btn-danger" value="Save" [disabled]="!appointmentForm.valid">
+                        </div>
+
+                    </form>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
