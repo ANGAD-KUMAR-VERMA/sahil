@@ -50,6 +50,12 @@ export class DoctorService {
         return this.http.put(`http://localhost:1002/users/appointment/${agentId}/${doctorId}/${patientId}/${appointmentDate}`, { headers: header })
   
     }
+
+    getAppointmentsDoctor(doctorId:number){
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:1002/users/doctors/appointments/${doctorId}`, { headers: header })  
+    }
     
 
 

@@ -39,5 +39,17 @@ export class PatientService {
         return this.http.get(`http://localhost:1002/users/get/patients/${username}`, { headers: header })
     }
 
+    getPatientAppointments(patientId:number):Observable<any>{
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:1002/users/get/appointments/${patientId}`, { headers: header })
+    }
+
+    getPatientByUsername(username:string): Observable<any> {
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:1002/users/get/patients/${username}`, { headers: header })  
+    }
+
 
 }

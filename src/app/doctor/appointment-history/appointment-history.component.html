@@ -8,18 +8,18 @@
                             Patient ID
                         </div>
                         <div class="col-6">
-                            {{appointment.patientId}}
+                            {{appointment.patient.username}}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">Agent ID</div>
                         <div class="col-6">
-                            {{appointment.agentId}}
+                            {{appointment.agent?.username}}
                         </div>
                     </div>
                     <div class="row">
-                       <div class="col-6">Booking Date</div>
-                    
+                        <div class="col-6">Booking Date</div>
+
                         <div class="col-6">
                             {{appointment.bookingDate}}
                         </div>
@@ -32,9 +32,20 @@
                         <div class="col-6">
                             Doctor Id
                         </div>
-                        <div class="col-6">{{appointment.doctorId}}</div>
+                        <div class="col-6">{{appointment.doctor.username}}</div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="col-6">Status</div>
+                        <div class="col-6">{{appointment.status}}</div>
+                    </div>
+                    <div class="row" *ngIf="statusApprovable()">
+                        <div class="col-6"><button class="btn btn-primary" (click)="approve(appointment.id)">Approve</button></div>
+                        <div class="col-6"><button class="btn btn-danger" (click)="disapprove(appointment.id)">Reject</button></div>
+                    </div>
+                    <div class="row" *ngIf="statusApprovable()">
+                        <div class="col-12"><a routerLink="#"><button class="btn btn-secondary">Update Test Results</button></a></div>
+                    </div>
+
                 </div>
             </div>
         </div>

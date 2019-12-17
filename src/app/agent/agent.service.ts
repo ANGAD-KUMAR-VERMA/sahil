@@ -37,5 +37,11 @@ export class AgentService {
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
         return this.http.get(`http://localhost:1002/users/get/agents/${username}`, { headers: header })
     }
+    
+    getAgentAppointments(agentId:number):Observable<any>{
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:1002/users/agents/appointments/${agentId}`, { headers: header })
+    }
 
 }

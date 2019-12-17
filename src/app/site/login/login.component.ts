@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.authService.isAdmin = data['role'] == 'ROLE_ADMIN' ? true : false;
         this.authService.isDoctor = data['role'] == 'ROLE_DOCTOR' ? true : false;
         this.authService.isAgent = data['role'] == 'ROLE_AGENT' ? true : false;
-        this.authService.isPatient=data['role'] == 'ROLE_PATIENT' ? true : false;
+        this.authService.isPatient=data['role'] == 'ROLE_USER' ? true : false;
         this.authService.loggedIn = true;
         if (this.authService.isAdmin) {
             this.authService.userAuthenticated = { username: username,  accessToken: this.authService.accessToken,status:true,password:"pwd" }
