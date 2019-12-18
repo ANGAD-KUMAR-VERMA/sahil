@@ -27,6 +27,8 @@ import { DetailsComponent } from './details/details.component';
 import { MedicareServiceEditComponent } from './medicareService/medicare-service-edit/medicare-service-edit.component';
 import { AppointmentComponent } from './doctor/appointment/appointment.component';
 import { AppointmentHistoryComponent } from './doctor/appointment-history/appointment-history.component';
+import { UpdateTestResultsComponent } from './doctor/update-test-results/update-test-results.component';
+import { ViewTestResultComponent } from './doctor/view-test-result/view-test-result.component';
 
 
 
@@ -55,6 +57,8 @@ import { AppointmentHistoryComponent } from './doctor/appointment-history/appoin
     MedicareServiceEditComponent,
     AppointmentComponent,
     AppointmentHistoryComponent,
+    UpdateTestResultsComponent,
+    ViewTestResultComponent,
   
   ],
   imports: [

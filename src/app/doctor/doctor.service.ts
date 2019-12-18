@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject, Observer } from "rxjs";
 import { AuthService } from "../services/auth.service";
 import { Doctor } from '../model/doctor.model';
+import { MedicalTestHistory } from '../model/medicalTestHistory.model';
 
 @Injectable({
     providedIn: 'root'
@@ -55,6 +56,19 @@ export class DoctorService {
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
         return this.http.get(`http://localhost:1002/users/doctors/appointments/${doctorId}`, { headers: header })  
+    }
+
+    updateMedicalTestResults(medicalTestHistory:MedicalTestHistory){
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.post(`http://localhost:1002/medicalTestHistory`,medicalTestHistory, { headers: header })  
+    }
+
+    getMedicalTestHistory(patientId:number):Observable<any>{
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:1002/medicalTestHistory/${patientId}`, { headers: header })  
+ 
     }
     
 

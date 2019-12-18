@@ -43,7 +43,7 @@
                         <div class="col-6"><button class="btn btn-danger" (click)="disapprove(appointment.id)">Reject</button></div>
                     </div>
                     <div class="row" *ngIf="statusApprovable()">
-                        <div class="col-12"><a routerLink="#"><button class="btn btn-secondary">Update Test Results</button></a></div>
+                        <div class="col-12"><a [routerLink]="['/doctor/testResults',appointment.id]"><button class="btn btn-secondary">Update Test Results</button></a></div>
                     </div>
 
                 </div>

@@ -7,9 +7,9 @@ export interface Appointment{
     id?:number;
     bookingDate:Date;
     appointmentDate:Date;
-   // doctorId:number;
-    //patientId:number;
-   // agentId?:number;
+    doctorId:number;
+    patientId:number;
+    agentId?:number;
     status?:string;
     doctor?:Doctor;
     patient?:Patient;

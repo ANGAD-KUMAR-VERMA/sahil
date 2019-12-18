@@ -1,0 +1,148 @@
+<div class="row justify-content-center mt-5">
+    <div class="col col-md-8 col-lg-8 col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Update Test Results
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success" *ngIf="submitStatus">Test Results Successfully Submitted !!</div>
+                <form [formGroup]="MedicalTestResultsForm" (submit)="onTestResultsSubmit()" *ngIf="!submitStatus">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="customerId">Customer ID</label>
+                                <input type="text" name="customerId" formControlName="customerId" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="doctorId">Doctor ID</label>
+                                <input type="text" name="doctorId" formControlName="doctorId" class="form-control " readonly>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="agentId">Agent ID</label>
+                                <input type="text" name="agentId" formControlName="agentId" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="serviceDate">Service Date</label>
+                                <input type="date" name="serviceDate" formControlName="serviceDate" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="testResultDate">Test Result Date</label>
+                                <input type="date" name="testResultDate" formControlName="testResultDate" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagActualValue_1">Diag Actual Value 1</label>
+                                <input type="text" name="diagActualValue_1" formControlName="diagActualValue_1" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagNormalRange_1">Diag Normal Range 1</label>
+                                <input type="text" name="diagNormalRange_1" formControlName="diagNormalRange_1" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagActualValue_2">Diag Actual Value 2</label>
+                                <input type="text" name="diagActualValue_2" formControlName="diagActualValue_2" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagNormalRange_2">Diag Normal Range 2</label>
+                                <input type="text" name="diagNormalRange_2" formControlName="diagNormalRange_2" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagActualValue_3">Diag Actual Value 3</label>
+                                <input type="text" name="diagActualValue_3" formControlName="diagActualValue_3" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagNormalRange_3">Diag Normal Range 3</label>
+                                <input type="text" name="diagNormalRange_3" formControlName="diagNormalRange_3" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagActualValue_4">Diag Actual Value 4</label>
+                                <input type="text" name="diagActualValue_4" formControlName="diagActualValue_4" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagNormalRange_4">Diag Normal Range 4</label>
+                                <input type="text" name="diagNormalRange_4" formControlName="diagNormalRange_4" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagActualValue_5">Diag Actual Value 5</label>
+                                <input type="text" name="diagActualValue_5" formControlName="diagActualValue_5" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagNormalRange_5">Diag Normal Range 5</label>
+                                <input type="text" name="diagNormalRange_5" formControlName="diagNormalRange_5" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagActualValue_6">Diag Actual Value 6</label>
+                                <input type="text" name="diagActualValue_6" formControlName="diagActualValue_6" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="diagNormalRange_1">Diag Normal Range 6</label>
+                                <input type="text" name="diagNormalRange_6" formControlName="diagNormalRange_6" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="doctorComments">Doctor Comments</label>
+                                <textarea rows="3" formControlName="doctorComments" class="form-control" name="doctorComments"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="otherInfo">Other Info</label>
+                                <textarea rows="3" formControlName="otherInfo" class="form-control" name="otherInfo"></textarea>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <input type="submit" class="btn btn-danger" value="Register" [disabled]="!MedicalTestResultsForm.valid">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

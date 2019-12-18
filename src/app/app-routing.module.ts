@@ -20,8 +20,8 @@ import { MedicareServiceEditComponent } from './medicareService/medicare-service
 import { AppointmentComponent } from './doctor/appointment/appointment.component';
 import { AppointmentHistoryComponent } from './doctor/appointment-history/appointment-history.component';
 import { DoctorMenuComponent } from './doctor/doctor-menu/doctor-menu.component';
-
-
+import { UpdateTestResultsComponent } from './doctor/update-test-results/update-test-results.component';
+import { ViewTestResultComponent } from './doctor/view-test-result/view-test-result.component';
 
 
 
@@ -40,6 +40,8 @@ const routes: Routes = [
   { path: 'services/edit/:id', component: MedicareServiceEditComponent, canActivate: [AuthGuardService] },
   { path: 'bookAppointment/:id', component: AppointmentComponent, canActivate: [AuthGuardService] },
   { path: 'doctor/appointments', component: AppointmentHistoryComponent, canActivate: [AuthGuardService] },
+  { path: 'doctor/viewTestResults', component: ViewTestResultComponent, canActivate: [AuthGuardService] },
+  { path: 'doctor/testResults/:id', component: UpdateTestResultsComponent, canActivate: [AuthGuardService] },
  {path : 'doctors',component:DoctorDetailsComponent,canActivate: [AuthGuardService]},
  {path : 'patients',component:PatientDetailsComponent,canActivate: [AuthGuardService]},
  {path : 'agents',component:AgentDetailsComponent,canActivate: [AuthGuardService]},

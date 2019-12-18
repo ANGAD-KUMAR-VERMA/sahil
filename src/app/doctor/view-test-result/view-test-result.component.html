@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">Test Results</div>
+            </div>
+            <div *ngIf="historyEmpty">User Doesnot have any Medical Test History</div>
+            <div class="card-body" *ngFor="let medicalTestHistory of medicalTestHistorys">
+                <div class="row">
+                    <div class="col-6"><b>Agent ID</b></div>
+                    <div class="col-6">{{medicalTestHistory.agentId}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Patient ID</b></div>
+                    <div class="col-6">{{medicalTestHistory.customerId}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Doctor Id</b></div>
+                    <div class="col-6">{{medicalTestHistory.doctorId}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Actual Value 1</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagActualValue_1}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Normal Range 1</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagNormalRange_1}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Actual Value 2</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagActualValue_2}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Normal Range 2</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagNormalRange_2}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Actual Value 3</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagActualValue_3}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Normal Range 3</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagNormalRange_3}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Actual Value 4</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagActualValue_4}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Normal Range 4</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagNormalRange_4}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Actual Value 5</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagActualValue_5}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Normal Range 5</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagNormalRange_5}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Actual Value 6</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagActualValue_6}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Diag Normal Range 6</b></div>
+                    <div class="col-6">{{medicalTestHistory.diagNormalRange_6}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Doctor Comments</b></div>
+                    <div class="col-6">{{medicalTestHistory.doctorComments}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><b>Other Information</b></div>
+                    <div class="col-6">{{medicalTestHistory.otherInfo}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
