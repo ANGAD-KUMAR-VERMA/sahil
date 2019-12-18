@@ -22,6 +22,8 @@ import { AppointmentHistoryComponent } from './doctor/appointment-history/appoin
 import { DoctorMenuComponent } from './doctor/doctor-menu/doctor-menu.component';
 import { UpdateTestResultsComponent } from './doctor/update-test-results/update-test-results.component';
 import { ViewTestResultComponent } from './doctor/view-test-result/view-test-result.component';
+import { ForgotPasswordComponent } from './site/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './site/reset-password/reset-password.component';
 
 
 
@@ -33,6 +35,8 @@ const routes: Routes = [
   {path:'signup/patient', component:PatientSignupComponent},
   {path:'signup/agent', component:AgentSignupComponent},
   {path:'signup/doctor', component:DoctorSignupComponent},
+  {path:'forgotPassword', component:ForgotPasswordComponent},
+  {path:'resetPassword/:id', component:ResetPasswordComponent},
   {path:'menu',component:DoctorMenuComponent},
   { path: 'edit/agent/:id', component: AgentEditComponent, canActivate: [AuthGuardService] },
   { path: 'edit/doctor/:id', component: DoctorEditComponent, canActivate: [AuthGuardService] },

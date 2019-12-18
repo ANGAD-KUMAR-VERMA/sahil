@@ -69,8 +69,7 @@ export class DoctorService {
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
         return this.http.get(`http://localhost:1002/medicalTestHistory/${patientId}`, { headers: header })  
  
-    }
-    
+    } 
 
 
 }

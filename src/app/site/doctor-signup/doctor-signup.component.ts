@@ -6,6 +6,7 @@ import { Doctor } from 'src/app/model/doctor.model';
 import { User } from 'src/app/services/user.model';
 import { MedicareServices } from 'src/app/model/medicareService.model';
 import { DoctorService } from 'src/app/doctor/doctor.service';
+import { SecurityQue } from 'src/app/model/securityQue.model';
 
 @Component({
   selector: 'app-doctor-signup',
@@ -23,6 +24,7 @@ export class DoctorSignupComponent implements OnInit {
   submitStatus: boolean = false;
   signupForm: FormGroup;
   alreadyExist: boolean = false;
+  securityQues:SecurityQue[];
   constructor(private userService:UserService,private authService:AuthService,private doctorService:DoctorService) { }
 
   ngOnInit() {
@@ -31,6 +33,10 @@ export class DoctorSignupComponent implements OnInit {
       this.tempMedicareServices = [...data]
       this.medicareServices = [...data]
   })
+
+  this.userService.getSecurityQuestions().subscribe((data:SecurityQue[])=>{
+    this.securityQues=[...data];
+})
   console.log(this.medicareServices);
 
     this.doctorRegisterForm=new FormGroup({
@@ -53,7 +59,9 @@ export class DoctorSignupComponent implements OnInit {
       'speciality': new FormControl(null, [Validators.required,Validators.maxLength(50)]),
       'workhours': new FormControl(null, [Validators.required,Validators.maxLength(20)]),
       'hospitalname': new FormControl(null, [Validators.required,Validators.maxLength(100)]),
-      'medicareServiceId':new FormControl(null,Validators.required)
+      'medicareServiceId':new FormControl(null,Validators.required),
+      'que': new FormControl(null, [Validators.required]),
+    'answer': new FormControl(null, [Validators.required])
     })
     console.log(this.doctorRegisterForm.get('firstname'));
   }
@@ -69,6 +77,8 @@ export class DoctorSignupComponent implements OnInit {
     user={
       username: this.doctorRegisterForm.get('username').value,
       password: this.doctorRegisterForm.get('password').value,
+      securityQue:this.doctorRegisterForm.get('que').value,
+    securityAnswer:this.doctorRegisterForm.get('answer').value,
       status:false,
       doctor:{
         username: this.doctorRegisterForm.get('username').value,
@@ -195,6 +205,13 @@ export class DoctorSignupComponent implements OnInit {
 
   get medicareServiceId(){
     return this.doctorRegisterForm.get('medicareServiceId');
+  }
+
+  get que(){
+    return this.doctorRegisterForm.get('que');
+  }
+  get answer(){
+    return this.doctorRegisterForm.get('answer');
   }
 
 

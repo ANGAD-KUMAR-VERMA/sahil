@@ -29,6 +29,9 @@ import { AppointmentComponent } from './doctor/appointment/appointment.component
 import { AppointmentHistoryComponent } from './doctor/appointment-history/appointment-history.component';
 import { UpdateTestResultsComponent } from './doctor/update-test-results/update-test-results.component';
 import { ViewTestResultComponent } from './doctor/view-test-result/view-test-result.component';
+import { FeedbackAnsComponent } from './feedback/feedback-ans/feedback-ans.component';
+import { ForgotPasswordComponent } from './site/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './site/reset-password/reset-password.component';
 
 
 
@@ -59,6 +62,9 @@ import { ViewTestResultComponent } from './doctor/view-test-result/view-test-res
     AppointmentHistoryComponent,
     UpdateTestResultsComponent,
     ViewTestResultComponent,
+    FeedbackAnsComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   
   ],
   imports: [

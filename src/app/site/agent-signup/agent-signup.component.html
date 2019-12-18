@@ -58,6 +58,24 @@
                                    <div> <span class="validation-error" *ngIf="lastname.hasError('pattern')">Special Characters are not allowed</span></div>
                                 </div>
                             </div>
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                    <div class="form-group">
+                                            <label for="que">Select Security Question</label>
+                                            <select formControlName="que" class="form-control">
+                                                <option *ngFor="let securityQue of securityQues " [value]="securityQue.id">{{securityQue.que}}</option>
+                                            </select>
+                                            <span class="validation-error" *ngIf="que.touched && que.hasError('required')">Select any one Option</span>
+                                        </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                        <div class="form-group">
+                                                <label for="answer"> Security Answer</label>
+                                                <input type="text" formControlName="answer" class="form-control" name="answer" >
+                                                 <span class="validation-error" *ngIf="answer.touched && answer.hasError('required')">Answer cannot be empty</span>
+                                            </div>
+                                    </div>
     
                             <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                 <div class="form-group">

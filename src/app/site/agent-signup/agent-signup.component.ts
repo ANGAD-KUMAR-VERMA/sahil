@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import { User } from 'src/app/services/user.model';
 import { Agent } from 'src/app/model/agent.model';
+import { SecurityQue } from 'src/app/model/securityQue.model';
 
 
 @Component({
@@ -21,9 +22,14 @@ export class AgentSignupComponent implements OnInit {
   submitStatus: boolean = false;
   signupForm: FormGroup;
   alreadyExist: boolean = false;
+  securityQues:SecurityQue[];
   constructor(private userService:UserService,private authService:AuthService) { }
 
   ngOnInit() {
+
+    this.userService.getSecurityQuestions().subscribe((data:SecurityQue[])=>{
+      this.securityQues=[...data];
+  })
 
     this.agentRegisterForm=new FormGroup({
       'username': new FormControl(null, [Validators.required,Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(50)]),
@@ -40,7 +46,9 @@ export class AgentSignupComponent implements OnInit {
       'address2': new FormControl(null, [Validators.maxLength(100)]),
       'city': new FormControl(null, [Validators.required,Validators.maxLength(50)]),
       'state': new FormControl(null, [Validators.required,Validators.maxLength(50)]),
-      'zipcode': new FormControl(null, [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]+$')])
+      'zipcode': new FormControl(null, [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]+$')]),
+      'que': new FormControl(null, [Validators.required]),
+    'answer': new FormControl(null, [Validators.required])
     })
   }
 
@@ -55,6 +63,8 @@ export class AgentSignupComponent implements OnInit {
   user={
     username: this.agentRegisterForm.get('username').value,
     password: this.agentRegisterForm.get('password').value,
+    securityQue:this.agentRegisterForm.get('que').value,
+    securityAnswer:this.agentRegisterForm.get('answer').value,
     status:false,
     agent:{
       username: this.agentRegisterForm.get('username').value,
@@ -154,6 +164,12 @@ export class AgentSignupComponent implements OnInit {
   }
   get zipcode(){
     return this.agentRegisterForm.get('zipcode');
+  }
+  get que(){
+    return this.agentRegisterForm.get('que');
+  }
+  get answer(){
+    return this.agentRegisterForm.get('answer');
   }
 
 }

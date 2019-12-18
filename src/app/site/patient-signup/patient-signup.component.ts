@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/services/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { Patient } from 'src/app/model/patient.model';
+import { SecurityQue } from 'src/app/model/securityQue.model';
 
 @Component({
   selector: 'app-patient-signup',
@@ -18,9 +19,14 @@ export class PatientSignupComponent implements OnInit {
   submitStatus: boolean = false;
   signupForm: FormGroup;
   alreadyExist: boolean = false;
+  securityQues:SecurityQue[];
   constructor(private userService:UserService,private authService:AuthService) { }
 
   ngOnInit() {
+
+    this.userService.getSecurityQuestions().subscribe((data:SecurityQue[])=>{
+      this.securityQues=[...data];
+  })
 
     this.patientRegisterForm=new FormGroup({
       'username': new FormControl(null, [Validators.required,Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(50)]),
@@ -37,7 +43,9 @@ export class PatientSignupComponent implements OnInit {
       'address2': new FormControl(null, [Validators.maxLength(100)]),
       'city': new FormControl(null, [Validators.required,Validators.maxLength(50)]),
       'state': new FormControl(null, [Validators.required,Validators.maxLength(50)]),
-      'zipcode': new FormControl(null, [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]+$')])
+      'zipcode': new FormControl(null, [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]+$')]),
+      'que': new FormControl(null, [Validators.required]),
+    'answer': new FormControl(null, [Validators.required])
     })
   }
 
@@ -52,6 +60,8 @@ export class PatientSignupComponent implements OnInit {
     user={
       username: this.patientRegisterForm.get('username').value,
       password: this.patientRegisterForm.get('password').value,
+      securityQue:this.patientRegisterForm.get('que').value,
+    securityAnswer:this.patientRegisterForm.get('answer').value,
       status:false,
       patient:{
         username: this.patientRegisterForm.get('username').value,
@@ -153,6 +163,13 @@ export class PatientSignupComponent implements OnInit {
   }
   get zipcode(){
     return this.patientRegisterForm.get('zipcode');
+  }
+
+  get que(){
+    return this.patientRegisterForm.get('que');
+  }
+  get answer(){
+    return this.patientRegisterForm.get('answer');
   }
 
 }

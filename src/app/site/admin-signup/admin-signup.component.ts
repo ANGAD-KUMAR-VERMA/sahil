@@ -4,6 +4,7 @@ import { Admin } from 'src/app/model/admin.model';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/services/user.model';
+import { SecurityQue } from 'src/app/model/securityQue.model';
 
 @Component({
   selector: 'app-admin-signup',
@@ -19,9 +20,14 @@ export class AdminSignupComponent implements OnInit {
   submitStatus: boolean = false;
   signupForm: FormGroup;
   alreadyExist: boolean = false;
+  securityQues:SecurityQue[];
   constructor(private userService:UserService,private authService:AuthService) { }
 
   ngOnInit() {
+
+    this.userService.getSecurityQuestions().subscribe((data:SecurityQue[])=>{
+      this.securityQues=[...data];
+  })
   
   this.adminRegisterForm=new FormGroup({
     'username': new FormControl(null, [Validators.required,Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(50)]),
@@ -33,14 +39,14 @@ export class AdminSignupComponent implements OnInit {
     'contactNo': new FormControl(null,[Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10),Validators.minLength(10)]),
     'altContactNo': new FormControl(null, [Validators.pattern('^[0-9]+$'),Validators.maxLength(10),Validators.minLength(10)]),
     'email': new FormControl(null, [Validators.required,Validators.email,Validators.maxLength(50)]),
-    'password': new FormControl(null, [Validators.required,Validators.maxLength(15)])
+    'password': new FormControl(null, [Validators.required,Validators.maxLength(15)]),
+    'que': new FormControl(null, [Validators.required]),
+    'answer': new FormControl(null, [Validators.required])
   })
   console.log(this.adminRegisterForm.get('firstname'));
 }
 
 onSignUpSubmit(){
-  console.log("helllo Admin signup");
-  console.log(this.adminRegisterForm.value['firstname']);
 
   this.submitStatus = true;
   let admin: Admin;
@@ -49,6 +55,8 @@ onSignUpSubmit(){
   user={
     username: this.adminRegisterForm.get('username').value,
     password: this.adminRegisterForm.get('password').value,
+    securityQue:this.adminRegisterForm.get('que').value,
+    securityAnswer:this.adminRegisterForm.get('answer').value,
     status:true,
     admin : {
       username: this.adminRegisterForm.get('username').value,
@@ -116,6 +124,13 @@ get email(){
 get password(){
   return this.adminRegisterForm.get('password');
 }
+get que(){
+  return this.adminRegisterForm.get('que');
+}
+get answer(){
+  return this.adminRegisterForm.get('answer');
+}
+
 
 userTaken(){
   let username = this.adminRegisterForm.get('username').value

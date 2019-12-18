@@ -14,4 +14,6 @@ export interface User {
     patient?:Patient;
     agent?:Agent;
     doctor?:Doctor;
+    securityQue?:string;
+    securityAnswer?:string;
 }
