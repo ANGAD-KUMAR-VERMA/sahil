@@ -21,7 +21,7 @@ export class PatientDetailsComponent implements OnInit {
   approveStatus: boolean = false;
   isApproved = false;
   patient: Patient;
-
+  fetchedPatient:Patient;
   roleId: number;
 
   constructor(private patientService: PatientService, private userService: UserService, private authService: AuthService) { }
@@ -73,6 +73,10 @@ export class PatientDetailsComponent implements OnInit {
 
   allDetails() {
     return this.showDetails = !this.showDetails;
+  }
+
+  allDetailsNew(patient:Patient){
+    this.fetchedPatient=patient;
   }
 
 

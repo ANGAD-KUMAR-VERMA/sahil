@@ -30,7 +30,7 @@ import { ResetPasswordComponent } from './site/reset-password/reset-password.com
 const routes: Routes = [
   { path: '', redirectTo: 'menu', pathMatch: 'full' },
   {path:'login', component:LoginComponent},
-  {path:'signup', component:SignupOptionComponent},
+  {path:'signup', component:PatientSignupComponent},
   {path:'signup/admin', component:AdminSignupComponent},
   {path:'signup/patient', component:PatientSignupComponent},
   {path:'signup/agent', component:AgentSignupComponent},

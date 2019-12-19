@@ -16,6 +16,7 @@ export class AgentDetailsComponent implements OnInit {
   tempAgent: Agent[];
   isMale: boolean;
   showDetails: boolean = false;
+  fetchedAgent:Agent;
   constructor(private agentService: AgentService, private authService: AuthService) { }
 
   ngOnInit() {
@@ -43,8 +44,8 @@ export class AgentDetailsComponent implements OnInit {
     })
   }
 
-  allDetails() {
-    return this.showDetails = !this.showDetails;
+  allDetailsNew(agent:Agent){
+    this.fetchedAgent=agent;
   }
 
   isEditable() {

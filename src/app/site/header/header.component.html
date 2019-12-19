@@ -1,18 +1,18 @@
-<nav class="navbar navbar-expand-md navbar-dark">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <a routerLink="menu" class="navbar-brand"><i class="material-icons dicon">
-            enhanced_encryption</i>DocCare</a>
+            enhanced_encryption</i>MediCare</a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navcontent">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navcontent">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a routerLink="doctors" class="nav-link" *ngIf="isLoggedIn()">Doctors</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a routerLink="patients" class="nav-link" *ngIf="isLoggedIn()">Patients</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a routerLink="agents" class="nav-link" *ngIf="isLoggedIn()">Agents</a>
             </li>
             <li class="nav-item">

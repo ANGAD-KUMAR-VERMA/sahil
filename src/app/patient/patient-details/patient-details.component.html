@@ -1,103 +1,126 @@
 <div class="container mt-5">
-    <div class="row justigy-content-center">
-        <div class="col-4"></div>
-        <div class="col-4 title text-center">Patient List</div>
-        <div class="col-4"></div>
-    </div>
-</div>
+    <div class="card">
+        <div class="card-header form-header header  d-flex justify-content-center">
+            Patient List
+        </div>
 
 
 
-<div class="row justify-content-center mt-5">
-    <div class="col-12 col-md-6 col-lg-4 mt-5" *ngFor="let patient of patients">
-        <div class="card">
-            <img src="https://image.flaticon.com/icons/png/512/17/17797.png" height="200px" width="200px" class="center">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-4">
-                        <b>
-                                                        <h6>Name :</h6>
-                                                </b></div>
 
-                    <div class="col-6 ">
-                        {{patient.firstname}} {{patient.lastname}}
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 col-md-6 col-lg-4 mt-5" *ngFor="let patient of patients">
+                <div class="card">
+                    <div class="card-user">
+                        <div class="card-title">
+                            {{patient.firstname}} {{patient.lastname}}
+                        </div>
                     </div>
-                    <div class="col-2 text-right">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <b>
+                                    <h6>Name :</h6>
+                                </b></div>
+
+                            <div class="col-6 ">
+                                {{patient.firstname}} {{patient.lastname}}
+                            </div>
+                            <div class="col-2 text-right">
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <b>
+                                    <h6>Age :</h6>
+                                </b></div>
+
+                            <div class="col-4">
+                                {{patient.age}}
+                            </div>
+                            <div class="col-4 text-right"><button class="btn" data-toggle="modal" data-target="#myModal" (click)="allDetailsNew(patient)"><i class="material-icons">
+                                        arrow_drop_down
+                                    </i></button></div>
+                        </div>
 
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-4">
-                        <b>
-                                                        <h6>Age :</h6>
-                                                </b></div>
 
-                    <div class="col-4">
-                        {{patient.age}}
-                    </div>
-                    <div class="col-4 text-right"><button class="btn" (click)="allDetails()"><i
-                                                                class="material-icons">
-                                                                arrow_drop_down
-                                                        </i></button></div>
-                </div>
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
 
-                <div class="row">
-                    <div class="col-6"></div>
-                    <div class="col-6 text-right"></div>
-                </div>
+                                <!-- Modal Header -->
+                                <div class="modal-header form-header">
+                                    <h4 class="modal-title header  ">{{fetchedPatient.firstname}} {{fetchedPatient.lastname}}</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
 
-                <div *ngIf="showDetails">
-                    <div class="row">
-                        <div class="col-4"><b>
-                                                                <h6>Email :</h6>
-                                                        </b></div>
-                        <div class="col-8">{{patient.email}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"><b>
-                                                                <h6>Conatct No :</h6>
-                                                        </b></div>
-                        <div class="col-8">{{patient.contactNo}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"><b>
-                                                                <h6> Alt Conatct No :</h6>
-                                                        </b></div>
-                        <div class="col-8">{{patient.altContactNo}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"><b>
-                                                                <h6>Address</h6>
-                                                        </b></div>
-                        <div class="col-8">{{patient.address1}},{{patient.address2}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"></div>
-                        <div class="col-8">
-                            {{patient.city}},{{patient.state}},{{patient.zipcode}}
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="card-header">
+                                        <table class="table">
+                                            <tr>
+                                                <td><i class="material-icons">
+                            email
+                        </i></td>
+                                                <td>{{fetchedPatient.email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons">
+                            card_travel
+                        </i></td>
+                                                <td> {{fetchedPatient.id}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons">
+                            today
+                        </i></td>
+                                                <td>{{fetchedPatient.age}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons">
+                            account_box
+                        </i></td>
+                                                <td>{{fetchedPatient.gender}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons">
+                            phone_android
+                        </i></td>
+                                                <td> {{fetchedPatient.contactNo}} / {{fetchedPatient.altContactNo}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons"> home </i></td>
+                                                <td>{{fetchedPatient.address1}},{{fetchedPatient.address2}},{{fetchedPatient.city}},{{fetchedPatient.state}},{{fetchedPatient.zipcode}}</td>
+                                            </tr>
+
+                                        </table>
+
+                                    </div>
+
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <a [routerLink]="['/edit/patient',fetchedPatient.id]" class="text_white"><button
+                        class="btn btn-primary" [disabled]="!isEditable()" data-dismiss="modal">Edit</button></a>
+                                        <button class="btn btn-success" (click)="approve(fetchedPatient.id)" [disabled]="!isApprovable()">Approve</button>
+                                        <button class="btn btn-danger" (click)="disApprove(fetchedPatient.id)" [disabled]="!isApprovable()">Disapprove</button>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <a [routerLink]="['/edit/patient',patient.id]" class="text_white"><button class="btn btn-primary"
-                                                                [disabled]="!isEditable()">Edit</button></a>
-                    </div>
-                    <div class="col-4">
-                        <button class="btn btn-success" (click)="approve(patient.id)" [disabled]="!isApprovable()">Approve</button>
-                    </div>
-                    <div class="col-4">
-                        <button class="btn btn-danger" (click)="disApprove(patient.id)" [disabled]="!isApprovable()">Disapprove</button>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </div>
-</div>

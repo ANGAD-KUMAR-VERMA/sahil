@@ -16,6 +16,7 @@ export class DoctorDetailsComponent implements OnInit {
   tempDoctor:Doctor[];
   isMale:boolean;
   showDetails:boolean=false;
+  fetchedDoctor:Doctor;
   constructor(private doctorService:DoctorService,private authService:AuthService) { }
 
   ngOnInit() {
@@ -59,8 +60,8 @@ export class DoctorDetailsComponent implements OnInit {
     return this.authService.isAgent || this.authService.isPatient;
   }
 
-  allDetails(){
-    return this.showDetails=!this.showDetails;
+  allDetails(doctor:Doctor){
+    this.fetchedDoctor=doctor;
     
   }
 

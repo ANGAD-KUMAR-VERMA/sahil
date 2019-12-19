@@ -1,134 +1,122 @@
 <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-4"></div>
-        <div class="col-4 title text-center">Doctors List</div>
-        <div class="col-4"></div>
-    </div>
-</div>
+    <div class="card">
+        <div class="card-header form-header header  d-flex justify-content-center">
+            Doctor List
+        </div>
 
-
-
-<div class="row justify-content-center mt-5">
-    <div class="col-12 col-md-6 col-lg-4 mt-5" *ngFor="let doctor of doctors">
-        <div class="card">
-            <img src="https://image.flaticon.com/icons/png/512/17/17797.png" height="200px" width="200px" class="center">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-4">
-                        <b>
-                            <h6>Name :</h6>
-                        </b></div>
-
-                    <div class="col-6 ">
-                        {{doctor.firstname}} {{doctor.lastname}}
-                    </div>
-                    <div class="col-2 text-right">
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-4">
-                        <b>
-                            <h6>Age :</h6>
-                        </b></div>
-
-                    <div class="col-4">
-                        {{doctor.age}}
-                    </div>
-                    <div class="col-4 text-right"><button class="btn" (click)="allDetails()"><i class="material-icons">
-                                arrow_drop_down
-                            </i></button></div>
-                </div>
-
-                <div class="row">
-                    <div class="col-6"></div>
-                    <div class="col-6 text-right"></div>
-                </div>
-
-                <div *ngIf="showDetails">
-                    <div class="row">
-                        <div class="col-4"><b>
-                                <h6>Email :</h6>
-                            </b></div>
-                        <div class="col-8">{{doctor.email}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"><b>
-                                <h6>Conatct No :</h6>
-                            </b></div>
-                        <div class="col-8">{{doctor.contactNo}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"><b>
-                                <h6> Alt Conatct No :</h6>
-                            </b></div>
-                        <div class="col-8">{{doctor.altContactNo}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"><b>
-                                <h6>Address</h6>
-                            </b></div>
-                        <div class="col-8">{{doctor.address1}},{{doctor.address2}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"></div>
-                        <div class="col-8">{{doctor.city}},{{doctor.state}},{{doctor.zipcode}}
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 col-md-6 col-lg-4 mt-5" *ngFor="let doctor of doctors">
+                <div class="card">
+                    <div class="card-user">
+                        <div class="card-title">
+                            {{doctor.firstname}} {{doctor.lastname}}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-4"><b>
-                                <h6>Degree</h6>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <b>
+                                <h6>Name :</h6>
                             </b></div>
-                        <div class="col-8">{{doctor.degree}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"><b>
-                                <h6>Speciality</h6>
+
+                            <div class="col-6 ">
+                                {{doctor.firstname}} {{doctor.lastname}}
+                            </div>
+                            <div class="col-2 text-right">
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <b>
+                                <h6>Age :</h6>
                             </b></div>
-                        <div class="col-8">{{doctor.speciality}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"><b>
-                                <h6>Work Hours</h6>
-                            </b></div>
-                        <div class="col-8">{{doctor.workhours}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"><b>
-                                <h6>Hospital Name</h6>
-                            </b></div>
-                        <div class="col-8">{{doctor.hospitalname}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"><b><h6>Medicare Service Id</h6></b></div>
-                        <div class="col-8">{{doctor.medicareServiceId}}</div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
+
+                            <div class="col-4">
+                                {{doctor.age}}
+                            </div>
+                            <div class="col-4 text-right"><button class="btn" data-toggle="modal" data-target="#myModal" (click)="allDetailsNew(doctor)"><i class="material-icons">
+                                    arrow_drop_down
+                                </i></button></div>
+                        </div>
 
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <a [routerLink]="['/edit/doctor',doctor.id]" class="text_white"><button class="btn btn-primary"
-                                [disabled]="!isEditable()">Edit</button></a>
-                    </div>
-                    <div class="col-4">
-                        <button class="btn btn-success" (click)="approve(doctor.id)" [disabled]="!isApprovable()">Approve</button>
-                    </div>
-                    <div class="col-4">
-                        <button class="btn btn-danger" (click)="disApprove(doctor.id)" [disabled]="!isApprovable()">Disapprove</button>
-                    </div>
-                </div>
-                <div class="row" *ngIf="canBeBooked()">
-                    <div class="col-12">
-                        <a [routerLink]="['/bookAppointment',doctor.id]"><button class="btn btn-primary">Book Appointment</button></a>
-                    </div>
-                </div>
 
+
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header form-header">
+                                    <h4 class="modal-title header  ">{{fetchedDoctor.firstname}} {{fetchedDoctor.lastname}}</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="card-header">
+                                        <table class="table">
+                                            <tr>
+                                                <td><i class="material-icons">
+                        email
+                    </i></td>
+                                                <td>{{fetchedDoctor.email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons">
+                        card_travel
+                    </i></td>
+                                                <td> {{fetchedDoctor.id}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons">
+                        today
+                    </i></td>
+                                                <td>{{fetchedDoctor.age}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons">
+                        account_box
+                    </i></td>
+                                                <td>{{fetchedDoctor.gender}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons">
+                        phone_android
+                    </i></td>
+                                                <td> {{fetchedDoctor.contactNo}} / {{fetchedDoctor.altContactNo}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons"> home </i></td>
+                                                <td>{{fetchedDoctor.address1}},{{fetchedDoctor.address2}},{{fetchedDoctor.city}},{{fetchedDoctor.state}},{{fetchedAgent.zipcode}}</td>
+                                            </tr>
+
+                                        </table>
+
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <div class="row" *ngIf="canBeBooked()">
+                                            <div class="col-12">
+                                                <a [routerLink]="['/bookAppointment',fetchedDoctor.id]"><button class="btn btn-primary">Book
+                                                        Appointment</button></a>
+                                            </div>
+                                        </div>
+                                        <a [routerLink]="['/edit/doctor',fetchedDoctor.id]" class="text_white"><button class="btn btn-primary"
+                                            [disabled]="!isEditable()" data-dismiss="modal">Edit</button></a>
+
+                                        <button class="btn btn-success" (click)="approve(fetchedDoctor.id)" [disabled]="!isApprovable()">Approve</button>
+                                        <button class="btn btn-danger" (click)="disApprove(fetchedDoctor.id)" [disabled]="!isApprovable()">Disapprove</button>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>

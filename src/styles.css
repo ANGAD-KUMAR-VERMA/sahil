@@ -1,0 +1,90 @@
+    * {
+        font-family: sans-serif;
+    }
+    
+    body {
+        background-image: linear-gradient(to top right, rgb(5, 153, 251), rgb(255, 255, 251));
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    html,
+    body {
+        min-height: 100vh;
+        height: auto;
+        margin: 0;
+    }
+    
+    .validation-success {
+        color: green;
+    }
+    
+    .validation-error {
+        color: red;
+        font-size: 15px;
+    }
+    
+    input.ng-touched.ng-invalid {
+        border: 1px solid red;
+    }
+    
+    .btn-app {
+        font-weight: 700px;
+        text-align: center;
+        vertical-align: middle;
+        margin: 0;
+        color: black;
+        background-color: white;
+    }
+    
+    .btn-signup {
+        color: white;
+        background-color: rgb(5, 153, 251);
+        padding: 10px;
+        margin-left: 16px;
+        font-weight: bolder;
+    }
+    
+    .header {
+        font-size: 50px;
+        font-weight: bolder;
+        color: white;
+    }
+    
+    .form-header {
+        color: white;
+        text-align: center;
+        background-color: rgb(5, 153, 251);
+    }
+    
+    .alert {
+        background-color: rgb(230, 94, 94);
+        color: white;
+        text-align: center;
+    }
+    
+    .card-title {
+        font-weight: bold;
+        text-align: center;
+        font-size: 30px;
+    }
+    
+    .card-user {
+        background-image: linear-gradient(to bottom right, rgb(5, 153, 251), rgb(255, 255, 251));
+        color: white;
+    }
+    
+    .modal-header {
+        text-align: center;
+    }
+    
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        color: white;
+    }
+    
+    .material-icons {
+        vertical-align: middle;
+    }

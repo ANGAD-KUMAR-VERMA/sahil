@@ -1,23 +1,38 @@
-.card-header{
-  background-color: rgba(30, 121, 224, 0.3);
-  font-size: 40px;
-  font-family:Verdana, Geneva, Tahoma, sans-serif
+.validation-error {
+    color: red;
+    font-size: 15px;
 }
 
-.card {
-  background-color: rgba(30, 121, 224, 0.2);
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
 }
 
- 
-.validation-error{
-  color:red;
-  font-size:15px;
+.form-group {
+    font-size: 20px;
 }
 
-input.ng-touched.ng-invalid{
-  border:1px solid red;
+.login-icon {
+    font-size: 100px;
+    color: rgb(5, 153, 251);
 }
 
-.form-group{
-  font-size: 20px;
+.header {
+    font-size: 50px;
+    font-weight: bolder;
+    color: rgb(73, 72, 72);
+}
+
+.padd {
+    padding: 27px;
+    text-align: center;
+}
+
+.btn-login {
+    font-size: 30px;
+    font-weight: 700px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+    color: white;
+    background-color: rgb(5, 153, 251);
 }
