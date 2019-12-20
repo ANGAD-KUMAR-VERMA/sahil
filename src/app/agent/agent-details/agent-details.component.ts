@@ -49,7 +49,7 @@ export class AgentDetailsComponent implements OnInit {
   }
 
   isEditable() {
-    return (this.authService.isAdmin || this.authService.isDoctor);
+    return (this.authService.isAdmin );
   }
 
   isApprovable() {

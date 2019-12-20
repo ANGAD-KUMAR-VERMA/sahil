@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/menu']);
     },(error)=>{
       this.isLoginValid = (error['status'] == 401) ? false : true;
-      
+      this.authService.loggedIn = false;
     });
     }
 
@@ -65,12 +65,19 @@ export class LoginComponent implements OnInit {
 
       this.authService.getUser(username).subscribe((data)=>{
         this.isUserAuthenticated=data['status']
-        if(!this.isUserAuthenticated){
-          this.isLoginValid=true;
-        }
-        console.log("Is user Authenticated "+this.isUserAuthenticated);
+        this.authService.loggedIn = true;
+        
+        
+        
          })
     }
+    else{
+      this.authService.loggedIn = false;
+    }
+  }
+
+  isLoggedIn(){
+    return this.authService.loggedIn;
   }
   setUserAuthenticated(){
     this.isUserAuthenticated=true;

@@ -14,8 +14,8 @@
                     </i>
                 </div>
                 <div class="justify-content-center d-flex header">Login</div>
-                <div class="alert " *ngIf="!isLoginValid">Invalid Username/Password</div>
-                <div class="alert " *ngIf="!isUserAuthenticated">Username is not Authenticated</div>
+                <div class="alert " *ngIf=" isUserAuthenticated && !isLoginValid">Invalid Username/Password</div>
+                <div class="alert " *ngIf="!isUserAuthenticated && !isLoggedIn()">Username is not Authenticated</div>
                 <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
 
                     <div class="form-group mt-3">

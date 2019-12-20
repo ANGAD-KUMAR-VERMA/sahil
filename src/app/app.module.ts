@@ -32,6 +32,8 @@ import { ViewTestResultComponent } from './doctor/view-test-result/view-test-res
 import { FeedbackAnsComponent } from './feedback/feedback-ans/feedback-ans.component';
 import { ForgotPasswordComponent } from './site/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './site/reset-password/reset-password.component';
+import { DatePipe } from '@angular/common';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 
@@ -65,6 +67,7 @@ import { ResetPasswordComponent } from './site/reset-password/reset-password.com
     FeedbackAnsComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    FeedbackComponent,
   
   ],
   imports: [
@@ -75,7 +78,7 @@ import { ResetPasswordComponent } from './site/reset-password/reset-password.com
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

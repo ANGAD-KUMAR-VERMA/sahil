@@ -8,6 +8,7 @@ import { MedicareService } from 'src/app/medicareService/medicareService.service
 import { AuthService } from 'src/app/services/auth.service';
 import { PatientService } from 'src/app/patient/patient.service';
 import { AgentService } from 'src/app/agent/agent.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-appointment',
@@ -25,12 +26,16 @@ export class AppointmentComponent implements OnInit {
   patientID:number;
   agentID:number;
   mediService:string;
-  constructor(private route:ActivatedRoute,private router:Router,
+  today:string;
+  constructor(
+    private datepipe:DatePipe,private route:ActivatedRoute,private router:Router,
     private doctorService:DoctorService,private medicareservice:MedicareService,
     private authService:AuthService,private patientService:PatientService,
     private agentService:AgentService) { }
 
   ngOnInit() {
+this.today=this.datepipe.transform(new Date(),'yyyy-MM-dd')
+
     this.appointmentForm=new FormGroup({
       'doctorId': new FormControl(null, Validators.required),
       'medicareService': new FormControl(null, Validators.required),

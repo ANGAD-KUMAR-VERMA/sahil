@@ -24,6 +24,7 @@ import { UpdateTestResultsComponent } from './doctor/update-test-results/update-
 import { ViewTestResultComponent } from './doctor/view-test-result/view-test-result.component';
 import { ForgotPasswordComponent } from './site/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './site/reset-password/reset-password.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 
@@ -50,6 +51,7 @@ const routes: Routes = [
  {path : 'patients',component:PatientDetailsComponent,canActivate: [AuthGuardService]},
  {path : 'agents',component:AgentDetailsComponent,canActivate: [AuthGuardService]},
  {path : 'services',component:MedicareSericeDetailsComponent,canActivate: [AuthGuardService]},
+ {path : 'feedback',component:FeedbackComponent,canActivate: [AuthGuardService]},
  { path: '**', component: NotFoundComponent }
 ];
 

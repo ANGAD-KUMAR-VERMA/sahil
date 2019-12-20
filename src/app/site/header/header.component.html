@@ -16,7 +16,7 @@
                 <a routerLink="agents" class="nav-link" *ngIf="isLoggedIn() && !isAgent()">Agents</a>
             </li>
             <li class="nav-item">
-                <a routerLink="services" class="nav-link"  *ngIf="isLoggedIn()">Medicare Services</a>
+                <a routerLink="services" class="nav-link" *ngIf="isLoggedIn()">Medicare Services</a>
             </li>
             <li class="nav-item">
                 <a routerLink="login" class="nav-link" *ngIf="!isLoggedIn()">Log In</a>
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" (click)="onSignOut()" class="nav-link" *ngIf="isLoggedIn()">Log Out</a>
+                <a (click)="onSignOut()" class="nav-link" *ngIf="isLoggedIn()">Log Out</a>
             </li>
         </ul>
     </div>

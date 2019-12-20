@@ -1,6 +1,6 @@
 export interface UserFeedback{
-    userId:number;
-    assessmentId:number;
+    userId?:number;
+    assessmentId?:number;
     ratingQue_1:string;
     ratingQue_2:string;
     ratingQue_3:string;

@@ -1,13 +1,12 @@
 <div class="row justify-content-center mt-5">
     <div class="col col-md-8 col-lg-8 col-sm-12">
         <div class="card">
-                <div class="card-header form-header header  d-flex justify-content-center">
-                        Book Appointment
-                    </div>
-           
+            <div class="card-header form-header header  d-flex justify-content-center">
+                Book Appointment
+            </div>
+
             <div class="card-body">
-                <div class="alert alert-success" *ngIf="appointmentBooked else bookAppointment">Appointment booked
-                    Successfully !!
+                <div class="alert alert-success" *ngIf="appointmentBooked else bookAppointment">Appointment booked Successfully !!
                 </div>
                 <div *ngIf="medicareServiceEdited"><a routerLink="/menu"><button class="btn btn-primary">Go To
                             HomePage</button></a> </div>
@@ -26,18 +25,16 @@
                             <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                 <div class="form-group">
                                     <label for="medicareService">Medicare Service</label>
-                                    <input type="text" name="medicareService" formControlName="medicareService"
-                                        class="form-control">
-                                        <span class="validation-error" *ngIf="medicareService.touched && medicareService.hasError('required')">It cannot be empty</span>
+                                    <input type="text" name="medicareService" formControlName="medicareService" class="form-control">
+                                    <span class="validation-error" *ngIf="medicareService.touched && medicareService.hasError('required')">It cannot be empty</span>
                                 </div>
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                 <div class="form-group">
                                     <label for="patientId">Patient ID</label>
-                                    <input type="text" name="patientId" formControlName="patientId"
-                                        class="form-control">
-                                        <span class="validation-error" *ngIf="patientId.touched && patientId.hasError('required')">It cannot be empty</span>
+                                    <input type="text" name="patientId" formControlName="patientId" class="form-control">
+                                    <span class="validation-error" *ngIf="patientId.touched && patientId.hasError('required')">It cannot be empty</span>
                                 </div>
                             </div>
 
@@ -51,9 +48,8 @@
                             <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                 <div class="form-group">
                                     <label for="appointmentDate">Appointment Date</label>
-                                    <input type="date" name="appointmentDate"
-                                        formControlName="appointmentDate" class="form-control">
-                                        <span class="validation-error" *ngIf="appointmentDate.touched && appointmentDate.hasError('required')">It cannot be empty</span>
+                                    <input type="date" [min]="today" name="appointmentDate" formControlName="appointmentDate" class="form-control">
+                                    <span class="validation-error" *ngIf="appointmentDate.touched && appointmentDate.hasError('required')">It cannot be empty</span>
                                 </div>
                             </div>
 
@@ -61,8 +57,7 @@
 
                         </div>
                         <div class="row">
-                            <input type="submit" class="btn btn-signup" value="Save"
-                                [disabled]="!appointmentForm.valid">
+                            <input type="submit" class="btn btn-signup" value="Save" [disabled]="!appointmentForm.valid">
                         </div>
 
                     </form>

@@ -1,0 +1,89 @@
+<div class="row justify-content-center mt-5">
+    <div class="col col-md-8 col-lg-8 col-sm-12">
+        <div class="card">
+            <div class="card-header form-header ">
+                <nav class="navbar navbar-expand-sm">
+                    <div class="header">Feedback </div>
+                </nav>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success" *ngIf="feedbackSubmitted else submitFeedback">Feedback Submitted successfully !!</div>
+                <div *ngIf="feedbackSubmitted"><a routerLink="/menu"><button class="btn btn-primary">Go To HomePage</button></a> </div>
+                <ng-template #submitFeedback>
+                    <form [formGroup]="feedbackSubmitForm" (submit)="onSubmitFeedback()">
+
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="que_1">{{feedback.que_1}}</label>
+                                    <input type="text" name="ratingQue_1" formControlName="ratingQue_1" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="que_2">{{feedback.que_2}}</label>
+                                    <input type="text" name="ratingQue_2" formControlName="ratingQue_2" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="que_3">{{feedback.que_3}}</label>
+                                    <input type="text" name="ratingQue_3" formControlName="ratingQue_3" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="que_4">{{feedback.que_4}}</label>
+                                    <input type="text" name="ratingQue_4" formControlName="ratingQue_4" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="que_5">{{feedback.que_5}}</label>
+                                    <input type="text" name="ratingQue_5" formControlName="ratingQue_5" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="que_6">{{feedback.que_6}}</label>
+                                    <input type="text" name="ratingQue_6" formControlName="ratingQue_6" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="que_7">{{feedback.que_7}}</label>
+                                    <input type="text" name="ratingQue_7" formControlName="ratingQue_7" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="que_8">{{feedback.que_8}}</label>
+                                    <input type="text" name="ratingQue_8" formControlName="ratingQue_8" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="que_9">{{feedback.que_9}}</label>
+                                    <input type="text" name="ratingQue_9" formControlName="ratingQue_9" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="que_10">{{feedback.que_10}}</label>
+                                    <input type="text" name="ratingQue_10" formControlName="ratingQue_10" class="form-control">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <input type="submit" class="btn btn-signup" value="Save" [disabled]="!feedbackSubmitForm.valid">
+                        </div>
+
+                    </form>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

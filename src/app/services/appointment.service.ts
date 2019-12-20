@@ -8,7 +8,7 @@ import { Appointment } from '../model/appointment.model';
     providedIn: 'root'
 })
 export class AppointmentService {
-    configUrl: string = 'http://localhost:1002/';
+    configUrl: string = 'http://localhost:8081/';
     filter = new Subject();
 
     constructor(private http: HttpClient, private authService: AuthService) {
@@ -18,19 +18,19 @@ export class AppointmentService {
     getAdminAppointments():Observable<any>{
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
-        return this.http.get(`http://localhost:1002/users/admin/appointments`, { headers: header })
+        return this.http.get(`http://localhost:8081/users/admin/appointments`, { headers: header })
     }
 
     getAppointment(id:number):Observable<any>{
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
-        return this.http.get(`http://localhost:1002/users/get/appointment/${id}`, { headers: header })
+        return this.http.get(`http://localhost:8081/users/get/appointment/${id}`, { headers: header })
     }
 
     updateAppointment(appointment:Appointment):Observable<any>{
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
-        return this.http.put(`http://localhost:1002/users/appointments`,appointment, { headers: header })
+        return this.http.put(`http://localhost:8081/users/appointments`,appointment, { headers: header })
   
     }
 
