@@ -59,7 +59,7 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   isEditable() {
-    if (this.authService.isAdmin || this.authService.isAgent || this.authService.isDoctor)
+    if (this.authService.isAdmin  || this.authService.isDoctor)
       return true;
   }
 

@@ -1,7 +1,10 @@
 <div class="row justify-content-center mt-5">
     <div class="col col-md-8 col-lg-8 col-sm-12">
         <div class="card">
-            <div class="card-header">Edit Medicare Service</div>
+                <div class="card-header form-header header  d-flex justify-content-center">
+                        Edit Medicare Service
+                    </div>
+            
             <div class="card-body">
                 <div class="alert alert-success" *ngIf="medicareServiceEdited else editMedicareService">Medicare Service details edited successfully !!</div>
                 <div *ngIf="medicareServiceEdited"><a routerLink="/menu"><button class="btn btn-primary">Go To HomePage</button></a> </div>
@@ -41,7 +44,7 @@
 
                         </div>
                         <div class="row">
-                            <input type="submit" class="btn btn-danger" value="Save" [disabled]="!medicareServiceEditForm.valid">
+                            <input type="submit" class="btn btn-signup" value="Save" [disabled]="!medicareServiceEditForm.valid">
                         </div>
 
                     </form>

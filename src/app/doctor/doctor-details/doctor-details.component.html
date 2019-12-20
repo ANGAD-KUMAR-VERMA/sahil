@@ -4,44 +4,32 @@
             Doctor List
         </div>
 
-        <div class="row justify-content-center mt-5">
-            <div class="col-12 col-md-6 col-lg-4 mt-5" *ngFor="let doctor of doctors">
-                <div class="card">
-                    <div class="card-user">
-                        <div class="card-title">
-                            {{doctor.firstname}} {{doctor.lastname}}
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-4">
-                                <b>
-                                <h6>Name :</h6>
-                            </b></div>
-
-                            <div class="col-6 ">
-                                {{doctor.firstname}} {{doctor.lastname}}
+        
+        <div class="card-body">
+                <ul class="list-group" >
+                        <li class="list-group-item" *ngFor="let doctor of doctors">
+                            <div class="row">
+                                <div class="col-1">{{doctor.id}}</div>
+                                <div class="col-6  text-center"><b><h5>{{doctor.firstname}} {{doctor.lastname}}</h5></b></div>
+                                <div class="col-4 text-center"  *ngIf="canBeBooked()"> <a [routerLink]="['/bookAppointment',doctor.id]"><button class="btn btn-primary">
+                                        <i class="material-icons">local_hospital </i> </button></a></div>
+                                        <div class="col-1" *ngIf="isAdmin()"></div>
+                                <div class="col-1" *ngIf="isAdmin()">  <a [routerLink]="['/edit/doctor',doctor.id]" class="text_white"><button
+                                    class="btn btn-primary" [disabled]="!isEditable()" ><i class="material-icons"> edit</i></button></a></div> 
+                                    <div class="col-1" *ngIf="isAdmin()"> <button class="btn btn-success" (click)="approve(doctor.id)" [disabled]="!isApprovable()"><i class="material-icons">done</i></button></div>
+                                    <div class="col-1" *ngIf="isAdmin()" > <button class="btn btn-danger" (click)="disApprove(doctor.id)" [disabled]="!isApprovable()"><i class="material-icons">close</i></button></div>
+                            <div class="col-1 text-right">
+                                <button class="btn" data-toggle="modal" data-target="#myModal" (click)="allDetails(doctor)"><i class="material-icons">
+                                        arrow_drop_down
+                                    </i></button>
+                                </div>
                             </div>
-                            <div class="col-2 text-right">
+                    </li>
+                    </ul>
+        </div>
+    </div>
+</div>
 
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-4">
-                                <b>
-                                <h6>Age :</h6>
-                            </b></div>
-
-                            <div class="col-4">
-                                {{doctor.age}}
-                            </div>
-                            <div class="col-4 text-right"><button class="btn" data-toggle="modal" data-target="#myModal" (click)="allDetailsNew(doctor)"><i class="material-icons">
-                                    arrow_drop_down
-                                </i></button></div>
-                        </div>
-
-                    </div>
 
 
                     <div class="modal" id="myModal">
@@ -89,8 +77,24 @@
                                                 <td> {{fetchedDoctor.contactNo}} / {{fetchedDoctor.altContactNo}}</td>
                                             </tr>
                                             <tr>
+                                                <td></td>
+                                                <td>{{fetchedDoctor.degree}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>{{fetchedDoctor.speciality}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="material-icons">local_hospital</i></td>
+                                                <td>{{ fetchedDoctor.hospitalname}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>{{fetchedDoctor.medicareServiceId}}</td>
+                                            </tr>
+                                            <tr>
                                                 <td><i class="material-icons"> home </i></td>
-                                                <td>{{fetchedDoctor.address1}},{{fetchedDoctor.address2}},{{fetchedDoctor.city}},{{fetchedDoctor.state}},{{fetchedAgent.zipcode}}</td>
+                                                <td>{{fetchedDoctor.address1}},{{fetchedDoctor.address2}},{{fetchedDoctor.city}},{{fetchedDoctor.state}},{{fetchedDoctor.zipcode}}</td>
                                             </tr>
 
                                         </table>
@@ -98,18 +102,20 @@
                                     </div>
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <div class="row" *ngIf="canBeBooked()">
-                                            <div class="col-12">
-                                                <a [routerLink]="['/bookAppointment',fetchedDoctor.id]"><button class="btn btn-primary">Book
+                                        <div class="row" >
+                                            <div class="col-4" *ngIf="canBeBooked()">
+                                                <a [routerLink]="['/bookAppointment',fetchedDoctor.id]"><button class="btn btn-primary" data-dismiss="modal">Book
                                                         Appointment</button></a>
                                             </div>
-                                        </div>
-                                        <a [routerLink]="['/edit/doctor',fetchedDoctor.id]" class="text_white"><button class="btn btn-primary"
-                                            [disabled]="!isEditable()" data-dismiss="modal">Edit</button></a>
+                                            <div class="col-2" *ngIf="isAdmin()"><a [routerLink]="['/edit/doctor',fetchedDoctor.id]" class="text_white"><button class="btn btn-primary"
+                                                [disabled]="!isEditable()" data-dismiss="modal">Edit</button></a></div>
+                                            
+                                             <div class="col-3" *ngIf="isAdmin()"> <button class="btn btn-success" (click)="approve(fetchedDoctor.id)" [disabled]="!isApprovable()">Approve</button>   </div>
+                                             <div class="col-3" *ngIf="isAdmin()">   <button class="btn btn-danger" (click)="disApprove(fetchedDoctor.id)" [disabled]="!isApprovable()">Disapprove</button></div>
 
-                                        <button class="btn btn-success" (click)="approve(fetchedDoctor.id)" [disabled]="!isApprovable()">Approve</button>
-                                        <button class="btn btn-danger" (click)="disApprove(fetchedDoctor.id)" [disabled]="!isApprovable()">Disapprove</button>
-
+                                            </div>
+                                        
+                                    
 
                                     </div>
                                 </div>
@@ -117,6 +123,4 @@
 
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+          

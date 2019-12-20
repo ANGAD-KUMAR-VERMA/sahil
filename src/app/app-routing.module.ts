@@ -28,7 +28,7 @@ import { ResetPasswordComponent } from './site/reset-password/reset-password.com
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'menu', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'login', component:LoginComponent},
   {path:'signup', component:PatientSignupComponent},
   {path:'signup/admin', component:AdminSignupComponent},
@@ -37,7 +37,7 @@ const routes: Routes = [
   {path:'signup/doctor', component:DoctorSignupComponent},
   {path:'forgotPassword', component:ForgotPasswordComponent},
   {path:'resetPassword/:id', component:ResetPasswordComponent},
-  {path:'menu',component:DoctorMenuComponent},
+  {path:'menu',component: DoctorMenuComponent, canActivate: [AuthGuardService] },
   { path: 'edit/agent/:id', component: AgentEditComponent, canActivate: [AuthGuardService] },
   { path: 'edit/doctor/:id', component: DoctorEditComponent, canActivate: [AuthGuardService] },
   { path: 'edit/patient/:id', component: PatientEditComponent, canActivate: [AuthGuardService] },

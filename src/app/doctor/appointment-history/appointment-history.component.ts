@@ -18,6 +18,7 @@ export class AppointmentHistoryComponent implements OnInit {
   appointment:Appointment;
   appointments:Appointment[];
   tempAppointment:Appointment[];
+  fetchedAppointment:Appointment;
   constructor(private doctorService:DoctorService,private authService:AuthService,
     private patientService:PatientService,private agentService:AgentService,
     private appointmentService:AppointmentService) { }
@@ -84,5 +85,13 @@ export class AppointmentHistoryComponent implements OnInit {
       this.appointment.status = "confirmed";
       this.appointmentService.updateAppointment(this.appointment).subscribe();
     })
+  }
+
+  allDetailsNew(appointment:Appointment){
+    this.fetchedAppointment=appointment;
+  }
+
+  isAgent(){
+    return this.authService.isAgent;
   }
 }

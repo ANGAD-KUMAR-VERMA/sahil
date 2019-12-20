@@ -1,23 +1,37 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-darkc mt-5">
-    <div class="navbar-brand">Medicare Services</div>
-</nav>
+<div class="container mt-5">
+        <div class="card">
+            <div class="card-header form-header header  d-flex justify-content-center">
+                Medicare Services
+            </div>
 
-<table>
-    <thead>
-        <th>Id</th>
-        <th>Medicare Service</th>
-        <th>Service Description</th>
-        <th>Amount</th>
-        <th>Edit</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let medicareService of medicareServices justify-content-center">
-            <td>{{medicareService.id}}</td>
-            <td>{{medicareService.medicareService}}</td>
-            <td>{{medicareService.serviceDescription}}</td>
-            <td>{{medicareService.amount}}</td>
-            <td><a [routerLink]="['edit',medicareService.id]"><button class="btn btn-danger" >Edit</button></a></td>
-        </tr>
+            <div class="card-body">
+                    <ul class="list-group" >
+                            <li class="list-group-item" >
+                                <div class="row table-th">
+                            <div class="col-1"> Id</div>
+                            <div class="col-3">Medicare Service</div>
+                            <div class="col-5">Service Description</div>
+                            <div class="col-2">Amount</div>
+                            <div class="col-1" *ngIf="isEditable()">Edit</div>
+                        </div>
+                            </li>
+                        
+                            <li class="list-group-item" *ngFor="let medicareService of medicareServices justify-content-center" >
+                                <div class="row" >
+                                <div class="col-1"> {{medicareService.id}}</div>
+                                <div class="col-3"> {{medicareService.medicareService}} </div>
+                                <div class="col-5">{{medicareService.serviceDescription}}</div>
+                                <div class="col-2">{{medicareService.amount}}</div>
+                                <div class="col-1" *ngIf="!isEditable()"></div>
+                                <div class="col-1" *ngIf="isEditable()"><a [routerLink]="['edit',medicareService.id]"><button class="btn btn-primary" ><i class="material-icons"> edit</i></button></a></div>
+                            </div>
+                                                 
+                        </li>
+                        </ul>
+            </div>
 
-    </tbody>
-</table>
+          
+
+         </div>
+         </div>   
+

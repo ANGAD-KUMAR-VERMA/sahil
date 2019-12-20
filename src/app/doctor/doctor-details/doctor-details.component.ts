@@ -48,8 +48,11 @@ export class DoctorDetailsComponent implements OnInit {
 
   isEditable(){
     console.log(this.authService.isAdmin);
-    return this.authService.isAdmin
-    
+    return this.authService.isAdmin 
+  }
+
+  isAdmin(){
+    return this.authService.isAdmin;
   }
 
   isApprovable(){

@@ -51,6 +51,8 @@ onSignUpSubmit(){
     
   })
 
+  this.submitStatus=true;
+
 
 }
 

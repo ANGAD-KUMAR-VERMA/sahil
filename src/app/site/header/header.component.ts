@@ -22,6 +22,18 @@ export class HeaderComponent implements OnInit {
     return this.authService.loggedIn
   }
 
+  isPatient(){
+    return this.authService.isPatient;
+  }
+
+  isDoctor(){
+    return this.authService.isDoctor;
+  }
+
+  isAgent(){
+    return this.authService.isAgent;
+  }
+
   getUser(){
    return this.authService.username;
   }

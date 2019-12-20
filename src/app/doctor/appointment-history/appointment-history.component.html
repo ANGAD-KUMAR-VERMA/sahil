@@ -1,53 +1,95 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12" *ngFor="let appointment of appointments">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            Patient ID
-                        </div>
-                        <div class="col-6">
-                            {{appointment.patient.username}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">Agent ID</div>
-                        <div class="col-6">
-                            {{appointment.agent?.username}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">Booking Date</div>
 
-                        <div class="col-6">
-                            {{appointment.bookingDate}}
+<div class="container mt-5">
+        <div class="card">
+            <div class="card-header form-header header  d-flex justify-content-center">
+                Appointment History
+            </div>
+    
+    
+    
+            <ul class="list-group" >
+                <li class="list-group-item" *ngFor="let appointment of appointments">
+                    <div class="row">
+                        <div class="col-1">{{appointment.patient.id}}</div>
+                        <div class="col-7 text-center"><b><h5>{{appointment.patient.firstname}} {{appointment.patient.lastname}}</h5></b></div>
+                          
+                            <div class="col-3"></div>
+                    <div class="col-1 text-right">
+                        <button class="btn" data-toggle="modal" data-target="#myModal" (click)="allDetailsNew(appointment)"><i class="material-icons">
+                                arrow_drop_down
+                            </i></button>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6">Appointment Date</div>
-                        <div class="col-6">{{appointment.appointmentDate}}</div>
+            </li>
+            </ul>
+    
+    
+           
+                       
+        </div>
+    </div> 
+    
+    <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+    
+                    <!-- Modal Header -->
+                    <div class="modal-header form-header">
+                        <h4 class="modal-title header  ">{{fetchedAppointment.patient.firstname}} {{fetchedAppointment.patient.lastname}}</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            Doctor Id
+    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                            <table class="table">
+                               <tr>
+                                   <th>Patient Name</th>
+                                   <td>{{fetchedAppointment.patient.firstname}} {{fetchedAppointment.patient.lastname}}</td>
+                               </tr>
+                               <tr *ngIf="isAgent()">
+                                   <th> Agent Name</th>
+                                   <td>{{fetchedAppointment.agent?.firstname}} {{fetchedAppointment.agent?.lastname}}</td>
+                               </tr>
+                               <tr>
+                                   <th>Doctor Name</th>
+                                   <td>{{fetchedAppointment.doctor.firstname}} {{fetchedAppointment.doctor.lastname}}</td>
+                               </tr>
+                               <tr>
+                                   <th>Booking Date</th>
+                                   <td>{{fetchedAppointment.bookingDate}}</td>
+                               </tr>
+                               <tr>
+                                   <th>Appointment Date</th>
+                                   <td>{{fetchedAppointment.appointmentDate}}</td>
+                               </tr>
+                               <tr>
+                                   <th>Status</th>
+                                   <td>{{fetchedAppointment.status}}</td>
+                               </tr>
+    
+                            </table>
+    
                         </div>
-                        <div class="col-6">{{appointment.doctor.username}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">Status</div>
-                        <div class="col-6">{{appointment.status}}</div>
-                    </div>
-                    <div class="row" *ngIf="statusApprovable()">
-                        <div class="col-6"><button class="btn btn-primary" (click)="approve(appointment.id)">Approve</button></div>
-                        <div class="col-6"><button class="btn btn-danger" (click)="disapprove(appointment.id)">Reject</button></div>
-                    </div>
-                    <div class="row" *ngIf="statusApprovable()">
-                        <div class="col-12"><a [routerLink]="['/doctor/testResults',appointment.id]"><button class="btn btn-secondary">Update Test Results</button></a></div>
-                    </div>
-
+         
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                 
+                                <div class="row" *ngIf="statusApprovable()">
+                                        <div class="col-4"><button class="btn btn-primary" (click)="approve(fetchedAppointment.id)">Approve</button></div>
+                                        <div class="col-4"><button class="btn btn-danger" (click)="disapprove(fetchedAppointment.id)">Reject</button></div>
+                                   
+                                        <div class="col-4"><a [routerLink]="['/doctor/testResults',fetchedAppointment.id]"><button class="btn btn-secondary" data-dismiss="modal">Update Test Results</button></a></div>
+                                    </div>
+    
+                        </div>
+                    
+                
+    
                 </div>
             </div>
         </div>
-    </div>
-</div>
+            
+
+
+
+

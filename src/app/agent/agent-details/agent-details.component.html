@@ -4,124 +4,109 @@
             Agent List
         </div>
 
-
-        <div class="row justify-content-center mt-5">
-            <div class="col-12 col-md-6 col-lg-4 mt-5" *ngFor="let agent of agents">
-                <div class="card">
-                    <div class="card-user">
-                        <div class="card-title">
-                            {{agent.firstname}} {{agent.lastname}}
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-4">
-                                <b>
-                                <h6>Name :</h6>
-                            </b></div>
-
-                            <div class="col-6 ">
-                                {{agent.firstname}} {{agent.lastname}}
-                            </div>
-                            <div class="col-2 text-right">
-
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-4">
-                                <b>
-                                <h6>Age :</h6>
-                            </b></div>
-
-                            <div class="col-4">
-                                {{agent.age}}
-                            </div>
-                            <div class="col-4 text-right"><button class="btn" data-toggle="modal" data-target="#myModal" (click)="allDetailsNew(agent)"><i class="material-icons">
-                                    arrow_drop_down
-                                </i></button></div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="modal" id="myModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header form-header">
-                                    <h4 class="modal-title header  ">{{fetchedAgent.firstname}} {{fetchedAgent.lastname}}</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <div class="card-header">
-                                        <table class="table">
-                                            <tr>
-                                                <td><i class="material-icons">
-                        email
-                    </i></td>
-                                                <td>{{fetchedAgent.email}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="material-icons">
-                        card_travel
-                    </i></td>
-                                                <td> {{fetchedAgent.id}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="material-icons">
-                        today
-                    </i></td>
-                                                <td>{{fetchedAgent.age}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="material-icons">
-                        account_box
-                    </i></td>
-                                                <td>{{fetchedAgent.gender}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="material-icons">
-                        phone_android
-                    </i></td>
-                                                <td> {{fetchedAgent.contactNo}} / {{fetchedAgent.altContactNo}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="material-icons"> home </i></td>
-                                                <td>{{fetchedAgent.address1}},{{fetchedAgent.address2}},{{fetchedAgent.city}},{{fetchedAgent.state}},{{fetchedAgent.zipcode}}</td>
-                                            </tr>
-
-                                        </table>
-
-                                    </div>
-
-
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <a [routerLink]="['/edit/agent',fetchedAgent.id]" class="text_white"><button
-                                        class="btn btn-primary" [disabled]="!isEditable()"  data-dismiss="modal">Edit</button></a>
-                                        <button class="btn btn-success" (click)="approve(agent.id)" [disabled]="!isApprovable()">Approve</button>
-                                        <button class="btn btn-danger" (click)="disApprove(agent.id)" [disabled]="!isApprovable()">Disapprove</button>
-
-
-                                    </div>
+        <div class="card-body">
+                <ul class="list-group" >
+                        <li class="list-group-item" *ngFor="let agent of agents">
+                            <div class="row">
+                                <div class="col-1">{{agent.id}}</div>
+                                <div class="col-7 text-center"><b><h5>{{agent.firstname}} {{agent.lastname}}</h5></b></div>
+                                <div class="col-3" *ngIf="!isEditable()"></div>
+                                <div class="col-1" *ngIf="isEditable()">  <a [routerLink]="['/edit/agent',agent.id]" class="text_white"><button
+                                    class="btn btn-primary" [disabled]="!isEditable()" ><i class="material-icons"> edit</i></button></a></div> 
+                                    <div class="col-1" *ngIf="isEditable()"> <button class="btn btn-success" (click)="approve(agent.id)" [disabled]="!isApprovable()"><i class="material-icons">done</i></button></div>
+                                    <div class="col-1" *ngIf="isEditable()"> <button class="btn btn-danger" (click)="disApprove(agent.id)" [disabled]="!isApprovable()"><i class="material-icons">close</i></button></div>
+                            <div class="col-1 text-right">
+                                <button class="btn" data-toggle="modal" data-target="#myModal" (click)="allDetailsNew(agent)"><i class="material-icons">
+                                        arrow_drop_down
+                                    </i></button>
                                 </div>
                             </div>
+                    </li>
+                    </ul>
+        </div>
+    </div>
+
+</div>
 
 
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header form-header">
+                <h4 class="modal-title header  ">{{fetchedAgent.firstname}} {{fetchedAgent.lastname}}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="card-header">
+                    <table class="table">
+                        <tr>
+                            <td><i class="material-icons">
+                                    email
+                                </i></td>
+                            <td>{{fetchedAgent.email}}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="material-icons">
+                                    card_travel
+                                </i></td>
+                            <td> {{fetchedAgent.id}}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="material-icons">
+                                    today
+                                </i></td>
+                            <td>{{fetchedAgent.age}}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="material-icons">
+                                    account_box
+                                </i></td>
+                            <td>{{fetchedAgent.gender}}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="material-icons">
+                                    phone_android
+                                </i></td>
+                            <td> {{fetchedAgent.contactNo}} / {{fetchedAgent.altContactNo}}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="material-icons"> home </i></td>
+                            <td>{{fetchedAgent.address1}},{{fetchedAgent.address2}},{{fetchedAgent.city}},{{fetchedAgent.state}},{{fetchedAgent.zipcode}}
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
 
 
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                   <div *ngIf="isEditable()">   
+                                        <a [routerLink]="['/edit/agent',fetchedAgent.id]" class="text_white"><button class="btn btn-primary"
+                            [disabled]="!isEditable()" data-dismiss="modal">Edit</button></a>
+                    <button class="btn btn-success" (click)="approve(agent.id)"
+                        [disabled]="!isApprovable()">Approve</button>
+                    <button class="btn btn-danger" (click)="disApprove(agent.id)"
+                        [disabled]="!isApprovable()">Disapprove</button>
 
-
-
-                        </div>
                     </div>
+
+
+
                 </div>
             </div>
         </div>
+
+
+
+
+
+
 
     </div>
 </div>

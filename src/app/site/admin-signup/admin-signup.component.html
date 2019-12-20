@@ -26,7 +26,7 @@
 
                 <div class="alert alert-success" *ngIf="submitStatus">Sign up Successfull !!</div>
                 <div class="alert alert-danger" *ngIf="alreadyExist">User Already Exist !!</div>
-                <div *ngIf="submitStatus"><a routerLink="/login"><button class="btn btn-primary">Login</button></a></div>
+                <div *ngIf="submitStatus"><a routerLink="/login"><button class="btn btn-signup">Login</button></a></div>
                 <form [formGroup]="adminRegisterForm" (submit)="onSignUpSubmit()" *ngIf="!submitStatus">
 
 

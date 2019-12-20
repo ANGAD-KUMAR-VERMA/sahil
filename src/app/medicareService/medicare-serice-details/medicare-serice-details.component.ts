@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicareServices } from 'src/app/model/medicareService.model';
 import { MedicareService } from '../medicareService.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-medicare-serice-details',
@@ -12,7 +13,7 @@ export class MedicareSericeDetailsComponent implements OnInit {
   tempMedicareServices:MedicareServices[];
   medicareServices:MedicareServices[];
   
-  constructor(private medicareService:MedicareService) { }
+  constructor(private medicareService:MedicareService,private authService:AuthService) { }
 
   ngOnInit() {
 
@@ -22,6 +23,10 @@ export class MedicareSericeDetailsComponent implements OnInit {
       console.log(this.medicareServices);
 
     })
+  }
+
+  isEditable(){
+   return this.authService.isAdmin || this.authService.isDoctor;
   }
 
 }

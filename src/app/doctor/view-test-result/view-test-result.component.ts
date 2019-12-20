@@ -14,6 +14,7 @@ export class ViewTestResultComponent implements OnInit {
   patientId:number=1;
   historyEmpty:boolean=false;
   medicalTestHistorys:MedicalTestHistory[];
+  fetchedMedicalTestHistory:MedicalTestHistory;
   constructor(private doctorService:DoctorService,private authService:AuthService,
     private patientService:PatientService) { }
 
@@ -39,6 +40,14 @@ export class ViewTestResultComponent implements OnInit {
       })
     }
 
+  }
+
+  allDetailsNew(medicalTestHistory:MedicalTestHistory){
+     this.fetchedMedicalTestHistory=medicalTestHistory;
+  }
+
+  isAgent(){
+    return this.authService.isAgent;
   }
 
 }

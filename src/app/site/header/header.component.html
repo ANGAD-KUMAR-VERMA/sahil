@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navcontent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-                <a routerLink="doctors" class="nav-link" *ngIf="isLoggedIn()">Doctors</a>
+                <a routerLink="doctors" class="nav-link" *ngIf="isLoggedIn() && !isDoctor()">Doctors</a>
             </li>
             <li class="nav-item ">
-                <a routerLink="patients" class="nav-link" *ngIf="isLoggedIn()">Patients</a>
+                <a routerLink="patients" class="nav-link" *ngIf="isLoggedIn() && !isPatient() && !isAgent()">Patients</a>
             </li>
             <li class="nav-item ">
-                <a routerLink="agents" class="nav-link" *ngIf="isLoggedIn()">Agents</a>
+                <a routerLink="agents" class="nav-link" *ngIf="isLoggedIn() && !isAgent()">Agents</a>
             </li>
             <li class="nav-item">
-                <a routerLink="services" class="nav-link">Medicare Services</a>
+                <a routerLink="services" class="nav-link"  *ngIf="isLoggedIn()">Medicare Services</a>
             </li>
             <li class="nav-item">
                 <a routerLink="login" class="nav-link" *ngIf="!isLoggedIn()">Log In</a>
