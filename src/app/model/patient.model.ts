@@ -1,3 +1,5 @@
+import { MedicalTestHistory } from './medicalTestHistory.model';
+
 export interface Patient{
     id?:number;
     username:string;
@@ -16,4 +18,5 @@ export interface Patient{
     state:string;
     zipcode:string;
     status?:boolean;
+    medicalTestHistory?:MedicalTestHistory[];
 }

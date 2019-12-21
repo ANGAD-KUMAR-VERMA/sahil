@@ -1,135 +1,128 @@
-
-
 <div class="container mt-5">
-        <div class="card">
-            <div class="card-header form-header header  d-flex justify-content-center">
-                    Test Results
-            </div>
-    
-    
-    
-            <ul class="list-group" >
-                <li class="list-group-item" *ngFor="let medicalTestHistory of medicalTestHistorys">
-                    <div class="row">
-                        <div class="col-8">{{medicalTestHistory.customerId}}</div>
-                          
-                            <div class="col-3"></div>
+    <div class="card">
+        <div class="card-header form-header header  d-flex justify-content-center">
+            Test Results
+        </div>
+
+
+
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let medicalTestHistory of medicalTestHistorys">
+                <div class="row">
+                    <div class="col-8"></div>
+
+                    <div class="col-3"></div>
                     <div class="col-1 text-right">
                         <button class="btn" data-toggle="modal" data-target="#myModal" (click)="allDetailsNew(medicalTestHistory)"><i class="material-icons">
                                 arrow_drop_down
                             </i></button>
-                        </div>
                     </div>
-            </li>
-            </ul>
-    
-    
-           
-                       
-        </div>
-    </div> 
-    
-    <div class="modal" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-    
-                    <!-- Modal Header -->
-                    <div class="modal-header form-header">
-                        <h4 class="modal-title header  ">{{fetchedMedicalTestHistory.customerId}}</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-    
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                            <table class="table">
-                               <tr>
-                                   <th>Patient ID</th>
-                                   <td>{{fetchedMedicalTestHistory.customerId}}</td>
-                               </tr>
-                               <tr *ngIf="isAgent()">
-                                   <th>Agent ID</th>
-                                   <td>{{fetchedMedicalTestHistory.agentId}}</td>
-                               </tr>
-                               <tr>
-                                   <th>Doctor Id</th>
-                                   <td>{{fetchedMedicalTestHistory.doctorId}}</td>
-                               </tr>
-                               <tr>
-                                   <th>Diag Actual Value 1</th>
-                                   <td>{{fetchedMedicalTestHistory.diagActualValue_1}}</td>
-                               </tr>
-                               <tr>
-                                   <th>Diag Normal Range 1</th>
-                                   <td>{{fetchedMedicalTestHistory.diagNormalRange_1}}</td>
-                               </tr>
-
-                               <tr>
-                                    <th>Diag Actual Value 2</th>
-                                    <td>{{fetchedMedicalTestHistory.diagActualValue_2}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Diag Normal Range 2</th>
-                                    <td>{{fetchedMedicalTestHistory.diagNormalRange_2}}</td>
-                                </tr>
-                                <tr>
-                                        <th>Diag Actual Value 3</th>
-                                        <td>{{fetchedMedicalTestHistory.diagActualValue_3}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Diag Normal Range 3</th>
-                                        <td>{{fetchedMedicalTestHistory.diagNormalRange_3}}</td>
-                                    </tr>
-                                    <tr>
-                                            <th>Diag Actual Value 4</th>
-                                            <td>{{fetchedMedicalTestHistory.diagActualValue_4}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Diag Normal Range 4</th>
-                                            <td>{{fetchedMedicalTestHistory.diagNormalRange_4}}</td>
-                                        </tr>
-                                        <tr>
-                                                <th>Diag Actual Value 5</th>
-                                                <td>{{fetchedMedicalTestHistory.diagActualValue_5}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Diag Normal Range 5</th>
-                                                <td>{{fetchedMedicalTestHistory.diagNormalRange_5}}</td>
-                                            </tr>
-                                            <tr>
-                                                    <th>Diag Actual Value 6</th>
-                                                    <td>{{fetchedMedicalTestHistory.diagActualValue_6}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Diag Normal Range 6</th>
-                                                    <td>{{fetchedMedicalTestHistory.diagNormalRange_6}}</td>
-                                                </tr>
-                                                <tr>
-                                                        <th>Doctor Comments</th>
-                                                        <td>{{fetchedMedicalTestHistory.doctorComments}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Other Information</th>
-                                                        <td>{{fetchedMedicalTestHistory.otherInfo}}</td>
-                                                    </tr>    
-                               
-    
-                            </table>
-    
-                        </div>
-         
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                 
-    
-                        </div>
-                    
-                
-    
                 </div>
+            </li>
+        </ul>
+
+
+
+
+    </div>
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header form-header">
+                <h4 class="modal-title header  ">{{fetchPatientName}}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <th>Patient ID</th>
+                        <td>{{fetchedMedicalTestHistory.customerId}}</td>
+                    </tr>
+                    <tr *ngIf="isAgent()">
+                        <th>Agent ID</th>
+                        <td>{{fetchedMedicalTestHistory.agentId}}</td>
+                    </tr>
+                    <tr>
+                        <th>Doctor Id</th>
+                        <td>{{fetchedMedicalTestHistory.doctorId}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Actual Value 1</th>
+                        <td>{{fetchedMedicalTestHistory.diagActualValue_1}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Normal Range 1</th>
+                        <td>{{fetchedMedicalTestHistory.diagNormalRange_1}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Diag Actual Value 2</th>
+                        <td>{{fetchedMedicalTestHistory.diagActualValue_2}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Normal Range 2</th>
+                        <td>{{fetchedMedicalTestHistory.diagNormalRange_2}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Actual Value 3</th>
+                        <td>{{fetchedMedicalTestHistory.diagActualValue_3}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Normal Range 3</th>
+                        <td>{{fetchedMedicalTestHistory.diagNormalRange_3}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Actual Value 4</th>
+                        <td>{{fetchedMedicalTestHistory.diagActualValue_4}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Normal Range 4</th>
+                        <td>{{fetchedMedicalTestHistory.diagNormalRange_4}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Actual Value 5</th>
+                        <td>{{fetchedMedicalTestHistory.diagActualValue_5}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Normal Range 5</th>
+                        <td>{{fetchedMedicalTestHistory.diagNormalRange_5}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Actual Value 6</th>
+                        <td>{{fetchedMedicalTestHistory.diagActualValue_6}}</td>
+                    </tr>
+                    <tr>
+                        <th>Diag Normal Range 6</th>
+                        <td>{{fetchedMedicalTestHistory.diagNormalRange_6}}</td>
+                    </tr>
+                    <tr>
+                        <th>Doctor Comments</th>
+                        <td>{{fetchedMedicalTestHistory.doctorComments}}</td>
+                    </tr>
+                    <tr>
+                        <th>Other Information</th>
+                        <td>{{fetchedMedicalTestHistory.otherInfo}}</td>
+                    </tr>
+
+
+                </table>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+
+
+            </div>
+
+
+
         </div>
-            
-
-
-
-
+    </div>
+</div>

@@ -58,18 +58,28 @@ export class DoctorService {
         return this.http.get(`http://localhost:8081/users/doctors/appointments/${doctorId}`, { headers: header })  
     }
 
-    updateMedicalTestResults(medicalTestHistory:MedicalTestHistory){
+    updateMedicalTestResults(id:number,medicalTestHistory:MedicalTestHistory){
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
-        return this.http.post(`http://localhost:8081/medicalTestHistory`,medicalTestHistory, { headers: header })  
+        return this.http.post(`http://localhost:8081/medicalTestHistory/${id}`,medicalTestHistory, { headers: header })  
     }
 
     getMedicalTestHistory(patientId:number):Observable<any>{
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
-        return this.http.get(`http://localhost:8081/medicalTestHistory/${patientId}`, { headers: header })  
- 
+        return this.http.get(`http://localhost:8081/medicalTestHistory/patient/${patientId}`, { headers: header })  
     } 
+    getMedicalHistoryByDcotorID(doctorId:number):Observable<any>{
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:8081/medicalTestHistory/${doctorId}`, { headers: header })  
+    }
+
+    getAllMedicalHistory():Observable<any>{
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:8081/medicalTestHistory`, { headers: header }) 
+    }
 
 
 }

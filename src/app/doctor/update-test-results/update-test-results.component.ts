@@ -7,6 +7,8 @@ import { MedicalTestHistory } from 'src/app/model/medicalTestHistory.model';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { Appointment } from 'src/app/model/appointment.model';
+import { PatientService } from 'src/app/patient/patient.service';
+import { Patient } from 'src/app/model/patient.model';
 
 @Component({
   selector: 'app-update-test-results',
@@ -24,9 +26,11 @@ export class UpdateTestResultsComponent implements OnInit {
  medicalTestHistory:MedicalTestHistory;
  alreadyExist=false;
  appointmentId:number;
+ patient:Patient;
 
   constructor(private userService:UserService,private authService:AuthService,private doctorService:DoctorService,
-    private route:ActivatedRoute,private router:Router,private appointmentService:AppointmentService) { }
+    private route:ActivatedRoute,private router:Router,private appointmentService:AppointmentService,
+    private patientService:PatientService) { }
 
   ngOnInit() {
     this.MedicalTestResultsForm=new FormGroup({
@@ -95,7 +99,8 @@ export class UpdateTestResultsComponent implements OnInit {
   }
   onTestResultsSubmit(){
     this.submitStatus = true;
-    this.medicalTestHistory={
+
+      this.medicalTestHistory={
         customerId: this.MedicalTestResultsForm.get('customerId').value,
         doctorId: this.MedicalTestResultsForm.get('doctorId').value,
         agentId: this.MedicalTestResultsForm.get('agentId').value,
@@ -114,11 +119,12 @@ export class UpdateTestResultsComponent implements OnInit {
         diagActualValue_6:this.MedicalTestResultsForm.get('diagActualValue_6').value,
         diagNormalRange_6:this.MedicalTestResultsForm.get('diagNormalRange_6').value,
         doctorComments:this.MedicalTestResultsForm.get('doctorComments').value,
-        otherInfo: this.MedicalTestResultsForm.get('otherInfo').value,
+        otherInfo: this.MedicalTestResultsForm.get('otherInfo').value
          
     }
      console.log(this.medicalTestHistory)
-    this.doctorService.updateMedicalTestResults(this.medicalTestHistory).subscribe();
+    this.doctorService.updateMedicalTestResults(this.medicalTestHistory.customerId,this.medicalTestHistory).subscribe();
+  
   }
 
   get customerId(){
