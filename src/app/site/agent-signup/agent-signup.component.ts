@@ -172,4 +172,7 @@ export class AgentSignupComponent implements OnInit {
     return this.agentRegisterForm.get('answer');
   }
 
+  isLogged(){
+    return this.authService.loggedIn;
+  }
 }

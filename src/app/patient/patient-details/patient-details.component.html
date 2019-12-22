@@ -4,7 +4,7 @@
             Patient List
         </div>
 
-
+        <div class="alert alert-success" *ngIf="listEmpty">Patient List is Empty!!</div>
 
         <ul class="list-group" >
             <li class="list-group-item" *ngFor="let patient of patients">

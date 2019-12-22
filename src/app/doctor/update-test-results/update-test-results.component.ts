@@ -9,6 +9,7 @@ import { AppointmentService } from 'src/app/services/appointment.service';
 import { Appointment } from 'src/app/model/appointment.model';
 import { PatientService } from 'src/app/patient/patient.service';
 import { Patient } from 'src/app/model/patient.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-update-test-results',
@@ -27,30 +28,33 @@ export class UpdateTestResultsComponent implements OnInit {
  alreadyExist=false;
  appointmentId:number;
  patient:Patient;
+ minDate:string;
 
   constructor(private userService:UserService,private authService:AuthService,private doctorService:DoctorService,
     private route:ActivatedRoute,private router:Router,private appointmentService:AppointmentService,
-    private patientService:PatientService) { }
+    private patientService:PatientService,private datepipe:DatePipe) { }
 
   ngOnInit() {
+    
+
     this.MedicalTestResultsForm=new FormGroup({
     'customerId':new FormControl(null,Validators.required),
     'doctorId':new FormControl(null,Validators.required),
     'agentId':new FormControl(null),
     'serviceDate':new FormControl(null,Validators.required),
     'testResultDate':new FormControl(null,Validators.required),
-    'diagActualValue_1':new FormControl(null,Validators.required),
-    'diagNormalRange_1':new FormControl(null,Validators.required),
-    'diagActualValue_2':new FormControl(null,Validators.required),
-    'diagNormalRange_2':new FormControl(null,Validators.required),
-    'diagActualValue_3':new FormControl(null,Validators.required),
-    'diagNormalRange_3':new FormControl(null,Validators.required),
-    'diagActualValue_4':new FormControl(null,Validators.required),
-    'diagNormalRange_4':new FormControl(null,Validators.required),
-    'diagActualValue_5':new FormControl(null,Validators.required),
-    'diagNormalRange_5':new FormControl(null,Validators.required),
-    'diagActualValue_6':new FormControl(null,Validators.required),
-    'diagNormalRange_6':new FormControl(null,Validators.required),
+    'diagActualValue_1':new FormControl(null,[Validators.required,,Validators.pattern('^[0-9]+$')]),
+    'diagNormalRange_1':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
+    'diagActualValue_2':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
+    'diagNormalRange_2':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
+    'diagActualValue_3':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
+    'diagNormalRange_3':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
+    'diagActualValue_4':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
+    'diagNormalRange_4':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
+    'diagActualValue_5':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
+    'diagNormalRange_5':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
+    'diagActualValue_6':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
+    'diagNormalRange_6':new FormControl(null,[Validators.required,Validators.pattern('^[0-9]+$')]),
     'doctorComments':new FormControl(null,Validators.required),
     'otherInfo':new FormControl(null),
     })
@@ -69,7 +73,7 @@ export class UpdateTestResultsComponent implements OnInit {
              // agentId:appointment.agent.id,
               doctorId:appointment.doctor.id,
               serviceDate:appointment.appointmentDate
-       
+             
             })
           }else{
             this.router.navigate(['']);
@@ -89,6 +93,7 @@ export class UpdateTestResultsComponent implements OnInit {
             this.router.navigate(['']);
           }
         }
+        this.minDate=this.datepipe.transform(appointment.appointmentDate,'yyyy-MM-dd')
           
       })
      

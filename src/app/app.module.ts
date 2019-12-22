@@ -23,7 +23,6 @@ import { DoctorEditComponent } from './doctor/doctor-edit/doctor-edit.component'
 import { PatientEditComponent } from './patient/patient-edit/patient-edit.component';
 import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
 import { NotFoundComponent } from './site/not-found/not-found.component';
-import { DetailsComponent } from './details/details.component';
 import { MedicareServiceEditComponent } from './medicareService/medicare-service-edit/medicare-service-edit.component';
 import { AppointmentComponent } from './doctor/appointment/appointment.component';
 import { AppointmentHistoryComponent } from './doctor/appointment-history/appointment-history.component';
@@ -34,6 +33,8 @@ import { ForgotPasswordComponent } from './site/forgot-password/forgot-password.
 import { ResetPasswordComponent } from './site/reset-password/reset-password.component';
 import { DatePipe } from '@angular/common';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { EditTestResultsComponent } from './doctor/edit-test-results/edit-test-results.component';
+import { ListComponent } from './feedback/list/list.component';
 
 
 
@@ -58,7 +59,6 @@ import { FeedbackComponent } from './feedback/feedback.component';
     PatientEditComponent,
     PatientDetailsComponent,
     NotFoundComponent,
-    DetailsComponent,
     MedicareServiceEditComponent,
     AppointmentComponent,
     AppointmentHistoryComponent,
@@ -68,6 +68,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     FeedbackComponent,
+    EditTestResultsComponent,
+    ListComponent,
   
   ],
   imports: [

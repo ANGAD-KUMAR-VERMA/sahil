@@ -41,9 +41,7 @@ export class AgentEditComponent implements OnInit {
 
     this.route.params.subscribe((params: Params) => {
       const agentId = params['id'];
-      console.log("AgentId_1"+agentId);
       this.agent_Id = agentId;
-      console.log("AgentId_2"+agentId);
       this.agentService.getAgent(agentId).subscribe((agent: Agent) => {
         agent.dateOfBirth = new Date(agent.dateOfBirth)
 

@@ -5,14 +5,15 @@
                 Appointment History
             </div>
     
-    
+            <div class="alert alert-success" *ngIf="listEmpty">Appointment History is Empty!!</div>
     
             <ul class="list-group" >
                 <li class="list-group-item" *ngFor="let appointment of appointments">
                     <div class="row">
                         <div class="col-1">{{appointment.patient.id}}</div>
-                        <div class="col-7 text-center"><b><h5>{{appointment.patient.firstname}} {{appointment.patient.lastname}}</h5></b></div>
-                          
+                        <div class="col-5 text-center"><b><h5>{{appointment.patient.firstname}} {{appointment.patient.lastname}}</h5></b></div>
+                        <div class="col-2" *ngIf="!canFeedbackBeGiven()"></div>
+                         <div class="col-2" *ngIf="canFeedbackBeGiven()"><a [routerLink]="['/feedback',appointment.id]"><button class="btn btn-signup"> Submit Feedback</button></a></div> 
                             <div class="col-3"></div>
                     <div class="col-1 text-right">
                         <button class="btn" data-toggle="modal" data-target="#myModal" (click)="allDetailsNew(appointment)"><i class="material-icons">
@@ -80,6 +81,9 @@
                                    
                                         <div class="col-4"><a [routerLink]="['/doctor/testResults',fetchedAppointment.id]"><button class="btn btn-secondary" data-dismiss="modal">Update Test Results</button></a></div>
                                     </div>
+                                    <div *ngIf="canFeedbackBeGiven()">
+                                    <a [routerLink]="['/feedback',fetchedAppointment.id]"><button class="btn btn-signup" data-dismiss="modal" >Give Feedback</button></a>
+                                </div>
     
                         </div>
                     

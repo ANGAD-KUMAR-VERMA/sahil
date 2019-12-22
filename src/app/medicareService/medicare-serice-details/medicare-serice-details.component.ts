@@ -12,6 +12,7 @@ export class MedicareSericeDetailsComponent implements OnInit {
 
   tempMedicareServices:MedicareServices[];
   medicareServices:MedicareServices[];
+  listEmpty:boolean=false;
   
   constructor(private medicareService:MedicareService,private authService:AuthService) { }
 
@@ -21,6 +22,10 @@ export class MedicareSericeDetailsComponent implements OnInit {
       this.tempMedicareServices = [...data]
       this.medicareServices = [...data]
       console.log(this.medicareServices);
+
+      if(this.medicareServices.length==0){
+         this.listEmpty=true;
+      }
 
     })
   }

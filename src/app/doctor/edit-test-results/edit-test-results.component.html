@@ -3,12 +3,12 @@
         <div class="card">
 
                 <div class="card-header form-header header  d-flex justify-content-center">
-                        Update Test Results
+                        Edit Test Results
                     </div>
             
             <div class="card-body">
-                <div class="alert alert-success" *ngIf="submitStatus">Test Results Successfully Submitted !!</div>
-                <form [formGroup]="MedicalTestResultsForm" (submit)="onTestResultsSubmit()" *ngIf="!submitStatus">
+                <div class="alert alert-success" *ngIf="submitStatus">Test Results Successfully Edited !!</div>
+                <form [formGroup]="EditMedicalTestResultsForm" (submit)="onTestResultsSubmit()" *ngIf="!submitStatus">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                             <div class="form-group">
@@ -166,7 +166,7 @@
 
                     </div>
                     <div class="row">
-                        <input type="submit" class="btn btn-signup" value="Save" [disabled]="!MedicalTestResultsForm.valid">
+                        <input type="submit" class="btn btn-signup" value="Save" [disabled]="!EditMedicalTestResultsForm.valid">
                     </div>
 
                 </form>

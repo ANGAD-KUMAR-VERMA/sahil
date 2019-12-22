@@ -1,0 +1,113 @@
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header form-header header  d-flex justify-content-center">
+            Feedback History
+        </div>
+
+          
+          <div class="alert alert-success" *ngIf="listEmpty">No Feedback have been provided !!</div>
+
+        <ul class="list-group" >
+            <li class="list-group-item" *ngFor="let userFeedback of userFeedbacks">
+                <div class="row">
+                    <div class="col-1">{{userFeedback.userId}}</div>
+                    <div class="col-1 text-center"><button class="btn btn-signup"><i class="material-icons">perm_identity</i></button></div>
+                    <div class="col-3 "> {{userFeedback.patientName}}</div>
+                        <div class="col-1 text-center"><button class="btn btn-signup"><i class="material-icons">local_hospital</i></button></div>
+                        <div class="col-3 ">{{userFeedback.doctorName}} </div>
+                        <div class="col-2"></div>
+                <div class="col-1 text-right">
+                    <button class="btn" data-toggle="modal" data-target="#myModal" (click)="allFeedbacks(userFeedback,feedback)"><i class="material-icons">
+                            arrow_drop_down
+                        </i></button>
+                    </div>
+                </div>
+        </li>
+        </ul>
+
+
+       
+                   
+    </div>
+</div> 
+
+<div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header form-header">
+                    <h4 class="modal-title header  ">{{fetchUserFeedback.patientName}}</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-12">
+                                    <label for="ratingQue_1">{{feedback.que_1}}</label>
+                                    <input type="text" class="form-control" [value]="fetchUserFeedback.ratingQue_1" readonly>
+                                </div>
+                            <div class="col-12">
+                                    <label for="ratingQue_2">{{feedback.que_2}}</label>
+                                    <input type="text"  class="form-control" [value]="fetchUserFeedback.ratingQue_2"readonly>
+                            </div>
+                            <div class="col-12">
+                                    <label for="ratingQue_3">{{feedback.que_3}}</label>
+                                    <input type="text"  class="form-control" [value]="fetchUserFeedback.ratingQue_3" readonly>
+                            </div>
+                            <div class="col-12">
+                                    <label for="ratingQue_4">{{feedback.que_4}}</label>
+                                    <input type="text"  class="form-control" [value]="fetchUserFeedback.ratingQue_4" readonly>
+                            </div>
+                            <div class="col-12">
+                                    <label for="ratingQue_5">{{feedback.que_5}}</label>
+                                    <input type="text"  class="form-control" [value]="fetchUserFeedback.ratingQue_5" readonly>
+                            </div>
+                            <div class="col-12">
+                                    <label for="ratingQue_6">{{feedback.que_6}}</label>
+                                    <input type="text"  class="form-control" [value]="fetchUserFeedback.ratingQue_6" readonly>
+                            </div>
+                            <div class="col-12">
+                                    <label for="ratingQue_7">{{feedback.que_7}}</label>
+                                    <input type="text"  class="form-control" [value]="fetchUserFeedback.ratingQue_7" readonly>
+                            </div>
+                            <div class="col-12">
+                                    <label for="ratingQue_8">{{feedback.que_8}}</label>
+                                    <input type="text"  class="form-control"  [value]="fetchUserFeedback.ratingQue_8" readonly>
+                            </div>
+                            <div class="col-12">
+                                    <label for="ratingQue_9">{{feedback.que_9}}</label>
+                                    <input type="text"  class="form-control" [value]="fetchUserFeedback.ratingQue_9" readonly>
+                            </div>
+                            <div class="col-12">
+                                    <label for="ratingQue_10">{{feedback.que_10}}</label>
+                                    <input type="text"  class="form-control" [value]="fetchUserFeedback.ratingQue_10" readonly>
+                            </div>
+
+
+                        </div>
+                        
+
+                 
+
+                    </div>
+     
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                    </div>
+                
+            
+
+            </div>
+        </div>
+    </div>
+        
+
+
+
+

@@ -17,6 +17,7 @@ export class AgentDetailsComponent implements OnInit {
   isMale: boolean;
   showDetails: boolean = false;
   fetchedAgent:Agent;
+  listEmpty:boolean=false;
   constructor(private agentService: AgentService, private authService: AuthService) { }
 
   ngOnInit() {
@@ -24,7 +25,9 @@ export class AgentDetailsComponent implements OnInit {
     this.agentService.getAgents().subscribe((data: Agent[]) => {
       this.tempAgent = [...data]
       this.agents = [...data]
-      console.log(this.agents);
+      if(this.agents.length==0){
+        this.listEmpty=true;
+      }
 
     })
   }

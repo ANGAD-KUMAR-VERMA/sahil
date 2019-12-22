@@ -25,6 +25,8 @@ import { ViewTestResultComponent } from './doctor/view-test-result/view-test-res
 import { ForgotPasswordComponent } from './site/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './site/reset-password/reset-password.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { EditTestResultsComponent } from './doctor/edit-test-results/edit-test-results.component';
+import { ListComponent } from './feedback/list/list.component';
 
 
 
@@ -43,6 +45,7 @@ const routes: Routes = [
   { path: 'edit/doctor/:id', component: DoctorEditComponent, canActivate: [AuthGuardService] },
   { path: 'edit/patient/:id', component: PatientEditComponent, canActivate: [AuthGuardService] },
   { path: 'services/edit/:id', component: MedicareServiceEditComponent, canActivate: [AuthGuardService] },
+  { path: 'edit/medicalTestHistory/:id', component: EditTestResultsComponent, canActivate: [AuthGuardService] },
   { path: 'bookAppointment/:id', component: AppointmentComponent, canActivate: [AuthGuardService] },
   { path: 'doctor/appointments', component: AppointmentHistoryComponent, canActivate: [AuthGuardService] },
   { path: 'doctor/viewTestResults', component: ViewTestResultComponent, canActivate: [AuthGuardService] },
@@ -52,6 +55,8 @@ const routes: Routes = [
  {path : 'agents',component:AgentDetailsComponent,canActivate: [AuthGuardService]},
  {path : 'services',component:MedicareSericeDetailsComponent,canActivate: [AuthGuardService]},
  {path : 'feedback',component:FeedbackComponent,canActivate: [AuthGuardService]},
+ {path : 'view/feedback',component:ListComponent,canActivate: [AuthGuardService]},
+ {path : 'feedback/:id',component:FeedbackComponent,canActivate: [AuthGuardService]},
  { path: '**', component: NotFoundComponent }
 ];
 

@@ -17,6 +17,7 @@ export class DoctorDetailsComponent implements OnInit {
   isMale:boolean;
   showDetails:boolean=false;
   fetchedDoctor:Doctor;
+  listEmpty:boolean=false;
   constructor(private doctorService:DoctorService,private authService:AuthService) { }
 
   ngOnInit() {
@@ -24,6 +25,9 @@ export class DoctorDetailsComponent implements OnInit {
     this.doctorService.getDoctors().subscribe((data: Doctor[]) => {
       this.tempDoctor = [...data]
       this.doctors = [...data]
+      if(this.doctors.length==0){
+        this.listEmpty=true;
+      }
   })
   }
 

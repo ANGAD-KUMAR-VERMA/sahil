@@ -1,7 +1,7 @@
 import { Patient } from './patient.model';
 
 export interface MedicalTestHistory{
-   id?:number;
+   reportId?:number;
    customerId:number;
    doctorId:number;
    agentId:number;
@@ -21,5 +21,7 @@ export interface MedicalTestHistory{
    diagNormalRange_6:number;
    doctorComments:string;
    otherInfo?:string;
+   patient?:Patient;
+   
   
 }

@@ -23,6 +23,7 @@ export class PatientDetailsComponent implements OnInit {
   patient: Patient;
   fetchedPatient:Patient;
   roleId: number;
+  listEmpty:boolean=false;
 
   constructor(private patientService: PatientService, private userService: UserService, private authService: AuthService) { }
 
@@ -30,6 +31,10 @@ export class PatientDetailsComponent implements OnInit {
     this.patientService.getPatients().subscribe((data: Patient[]) => {
       this.tempPatients = [...data]
       this.patients = [...data]
+
+      if(this.patients.length==0){
+        this.listEmpty=true;
+      }
     })
 
 
@@ -79,6 +84,6 @@ export class PatientDetailsComponent implements OnInit {
     this.fetchedPatient=patient;
   }
 
-
+ 
 
 }

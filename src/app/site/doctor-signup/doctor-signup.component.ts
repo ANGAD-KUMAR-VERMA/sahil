@@ -214,6 +214,9 @@ export class DoctorSignupComponent implements OnInit {
     return this.doctorRegisterForm.get('answer');
   }
 
+  isLogged(){
+    return this.authService.loggedIn;
+  }
 
 
 }

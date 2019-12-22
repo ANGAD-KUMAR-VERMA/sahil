@@ -18,5 +18,5 @@ export interface Patient{
     state:string;
     zipcode:string;
     status?:boolean;
-    medicalTestHistory?:MedicalTestHistory[];
+   // medicalTestHistory?:MedicalTestHistory[];
 }

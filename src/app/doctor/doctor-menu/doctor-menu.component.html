@@ -7,8 +7,18 @@
             <a routerLink="/doctor/viewTestResults">
                 <div class="btn viewTestResults">View Test Results</div>
             </a>
-            <a routerLink="/feedback">
-                <div class="btn feedback">Give Feedback</div>
+            <a routerLink="/doctor/appointments">
+                <div class="btn feedback" *ngIf="canSubmitFeedback()">Give Feedback</div>
+            </a>
+            <a routerLink="/signup/agent">
+                <div class="btn agent" *ngIf="canAddAgent()">Add Agent</div>
+            </a>
+            <a routerLink="/signup/doctor">
+                <div class="btn feedback" *ngIf="canAddDoctor()">Add Doctor</div>
+            </a>
+
+            <a routerLink="/view/feedback">
+                <div class="btn feedback" *ngIf="canSeeFeedback()">View Feedbacks</div>
             </a>
 
 

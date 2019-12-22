@@ -19,6 +19,7 @@ export class AppointmentHistoryComponent implements OnInit {
   appointments:Appointment[];
   tempAppointment:Appointment[];
   fetchedAppointment:Appointment;
+  listEmpty:boolean=false;
   constructor(private doctorService:DoctorService,private authService:AuthService,
     private patientService:PatientService,private agentService:AgentService,
     private appointmentService:AppointmentService) { }
@@ -32,6 +33,9 @@ export class AppointmentHistoryComponent implements OnInit {
         this.doctorService.getAppointmentsDoctor(this.id).subscribe((dataAppointment:Appointment[])=>{
            this.tempAppointment=[...dataAppointment];
            this.appointments = [...dataAppointment];
+           if(this.appointments.length==0){
+             this.listEmpty=true;
+           }
         })
         })
      }
@@ -43,6 +47,9 @@ export class AppointmentHistoryComponent implements OnInit {
         this.agentService.getAgentAppointments(this.id).subscribe((dataAppointment:Appointment[])=>{
            this.tempAppointment=[...dataAppointment];
            this.appointments = [...dataAppointment];
+           if(this.appointments.length==0){
+            this.listEmpty=true;
+          }
         })
         })
      }
@@ -54,6 +61,9 @@ export class AppointmentHistoryComponent implements OnInit {
         this.patientService.getPatientAppointments(this.id).subscribe((dataAppointment:Appointment[])=>{
            this.tempAppointment=[...dataAppointment];
            this.appointments = [...dataAppointment];
+           if(this.appointments.length==0){
+            this.listEmpty=true;
+          }
         })
         })
      }
@@ -62,6 +72,9 @@ export class AppointmentHistoryComponent implements OnInit {
          this.appointmentService.getAdminAppointments().subscribe((dataAppointment:Appointment[])=>{
           this.tempAppointment=[...dataAppointment];
           this.appointments = [...dataAppointment];
+          if(this.appointments.length==0){
+            this.listEmpty=true;
+          }
        })
      } 
   }
@@ -93,5 +106,9 @@ export class AppointmentHistoryComponent implements OnInit {
 
   isAgent(){
     return this.authService.isAgent;
+  }
+
+  canFeedbackBeGiven(){
+    return this.authService.isPatient || this.authService.isAgent;
   }
 }

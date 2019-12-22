@@ -3,6 +3,7 @@ import { MedicalTestHistory } from 'src/app/model/medicalTestHistory.model';
 import { DoctorService } from '../doctor.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { PatientService } from 'src/app/patient/patient.service';
+import { AgentService } from 'src/app/agent/agent.service';
 
 @Component({
   selector: 'app-view-test-result',
@@ -13,14 +14,16 @@ export class ViewTestResultComponent implements OnInit {
 
   patientId:number;
   doctorId:number;
+  agentId:number; 
   historyEmpty:boolean=false;
   medicalTestHistorys:MedicalTestHistory[];
   fetchedMedicalTestHistory:MedicalTestHistory;
-  fetchPatientName:string;
-  patientName:string;
+  fetchDoctorName:string;
+  fetchAgentName:string;
   increment:number=0;
+  listEmpty:boolean=false;
   constructor(private doctorService:DoctorService,private authService:AuthService,
-    private patientService:PatientService) { }
+    private patientService:PatientService,private agentService:AgentService) { }
 
   ngOnInit() {
 
@@ -29,11 +32,6 @@ export class ViewTestResultComponent implements OnInit {
       this.patientService.getPatientByUsername(this.authService.username).subscribe((data)=>{
         this.patientId=data['id']
         this.doctorService.getMedicalTestHistory(this.patientId).subscribe((data:MedicalTestHistory[])=>{
-          this.patientService.getPatient(data[this.increment].customerId).subscribe((dataa)=>{
-            this.patientName=dataa['firstname']+ " " +dataa['lastname'];
-            this.increment=this.increment+1;  
-          })
-
           if(data.length==0){
             this.historyEmpty=true;
           }
@@ -47,32 +45,47 @@ export class ViewTestResultComponent implements OnInit {
               this.doctorId=dataDoctor['id'];
       
       this.doctorService.getMedicalHistoryByDcotorID(this.doctorId).subscribe((data:MedicalTestHistory[])=>{
-        this.patientService.getPatient(data[this.increment].customerId).subscribe((dataa)=>{
-          this.patientName=dataa['firstname']+ " " +dataa['lastname'];
-          this.increment=this.increment+1;  
-        })
         this.medicalTestHistorys = [...data];
+        if(data.length==0){
+          this.historyEmpty=true;
+        }
       })
     })
     }
 
-    else{
+    else if(this.authService.isAdmin){
       this.doctorService.getAllMedicalHistory().subscribe((data:MedicalTestHistory[])=>{
-        this.patientService.getPatient(data[this.increment].customerId).subscribe((dataa)=>{
-          this.patientName=dataa['firstname']+ " " +dataa['lastname'];
-          this.increment=this.increment+1;  
-        })
         this.medicalTestHistorys = [...data];
+        if(data.length==0){
+          this.historyEmpty=true;
+        }
       })
-    } 
+    }
+    
+    else{
+      this.agentService.getAgentByUsername(this.authService.username).subscribe((data)=>{
+          this.agentId=data['id'];
+
+          this.doctorService.getMedicalHistoryByAgentID(this.agentId).subscribe((data:MedicalTestHistory[])=>{
+            this.medicalTestHistorys = [...data];
+            if(data.length==0){
+              this.historyEmpty=true;
+            }
+          })
+      })
+    }
 
 
   }
 
   allDetailsNew(medicalTestHistory:MedicalTestHistory){
      this.fetchedMedicalTestHistory=medicalTestHistory;
-     this.patientService.getPatient(medicalTestHistory.customerId).subscribe((data)=>{
-      this.fetchPatientName=data['firstname']+ " " +data['lastname'];
+     this.doctorService.getDoctor(medicalTestHistory.doctorId).subscribe((data)=>{
+      this.fetchDoctorName=data['firstname']+ " " +data['lastname'];
+    })
+
+    this.agentService.getAgent(medicalTestHistory.agentId).subscribe((dataa)=>{
+        this.fetchAgentName=dataa['firstname']+ " " +dataa['lastname'];
     })
 
   }
@@ -80,6 +93,10 @@ export class ViewTestResultComponent implements OnInit {
 
   isAgent(){
     return this.authService.isAgent;
+  }
+
+  isEditable(){
+    return this.authService.isDoctor;
   }
 
 }

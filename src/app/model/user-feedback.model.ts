@@ -1,6 +1,12 @@
 export interface UserFeedback{
     userId?:number;
     assessmentId?:number;
+    doctorId?:number;
+    doctorName?:string;
+    appointmentId?:number;
+    patientId?:number;
+    patientName?:string;
+    assessmentDate?:Date;
     ratingQue_1:string;
     ratingQue_2:string;
     ratingQue_3:string;

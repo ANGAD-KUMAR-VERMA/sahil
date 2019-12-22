@@ -58,12 +58,23 @@ export class DoctorService {
         return this.http.get(`http://localhost:8081/users/doctors/appointments/${doctorId}`, { headers: header })  
     }
 
+    getAppointmentById(id:number){
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:8081/users/get/appointment/${id}`, { headers: header })  
+    }
+
     updateMedicalTestResults(id:number,medicalTestHistory:MedicalTestHistory){
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
         return this.http.post(`http://localhost:8081/medicalTestHistory/${id}`,medicalTestHistory, { headers: header })  
     }
 
+    EditMedicalTestResults(medicalTestHistory:MedicalTestHistory){
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.put(`http://localhost:8081/medicalTestHistory/put`,medicalTestHistory, { headers: header })  
+    }
     getMedicalTestHistory(patientId:number):Observable<any>{
         let header = new HttpHeaders();
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
@@ -74,6 +85,19 @@ export class DoctorService {
         header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
         return this.http.get(`http://localhost:8081/medicalTestHistory/${doctorId}`, { headers: header })  
     }
+
+    getMedicalHistoryByAgentID(agentId:number):Observable<any>{
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:8081/medicalTestHistory/agent/${agentId}`, { headers: header })  
+    }
+
+    getMedicalHistoryByID(id:number):Observable<any>{
+        let header = new HttpHeaders();
+        header = header.set('Authorization', 'Bearer ' + this.authService.accessToken);
+        return this.http.get(`http://localhost:8081/medicalTestHistory/get/${id}`, { headers: header })  
+    }
+
 
     getAllMedicalHistory():Observable<any>{
         let header = new HttpHeaders();
